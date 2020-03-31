@@ -1,0 +1,25 @@
+<%= form_with(model: tweet, local: true) do |form| %> <!-- form_withヘルパーメソッドのmodelオプションでbookモデルを指定 -->
+    <% if tweet.errors.any? %> <!-- 6.1.10 エラーの有無を判断している -->
+        <div id="errors_explanation" >
+            <h2> <%= pluralize(tweet.errors.count, "error") %> prohibited this book from being saved: </h2> <!-- 13.1.1 errorの数を数えて、それに応じてerrorを複数形にするか単数系にするか判断している -->
+
+            <ul>
+                <%= tweet.errors.full_messages.each do |message| %>
+                    <li> <%= message %> <li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+        <%= form.label :content %>
+        <%= form.text_field :content %>
+    </div>
+
+    <%= form.hidden_field :user_id %>
+    <%= form.hidden_field :user_name %>
+    
+    <div class="actions">
+        <%= form.submit %> <!-- 10.4.3 modelオプションを使用した場合は、new/editアクションによって生成された画面のデータは、次のcreate/updateアクションにルーティングされるというルールになっている-->
+    </div>
+<% end %>

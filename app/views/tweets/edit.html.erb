@@ -1,5 +1,8 @@
-<h1>New Tweet</h1>
+<h1>Editing Tweet</h1>
 
 <%= render 'form', tweet: @tweet %> <!-- 10.3.1 部分テンプレートはファイル名は_で始めるが、renderする際は_を除いた名前で指定する -->
 
-<%= link_to 'Back', tweets_path %>
+<br>
+
+<%= link_to 'Show', @tweet %> | <!-- book_path(@tweet)の略? -->
+<%= link_to 'Back', tweets_path %> 
