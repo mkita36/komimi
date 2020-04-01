@@ -18,7 +18,7 @@ class RepliesController < ApplicationController
   def create
     @reply = Reply.new(reply_params)
       if @reply.save
-        redirect_to @reply, notice: 'Reply was successfully created.'
+        redirect_to tweets_path, notice: 'Reply was successfully created.'
       else
         render :new
       end
@@ -26,7 +26,7 @@ class RepliesController < ApplicationController
 
   def update
       if @reply.update(reply_params)
-        redirect_to @reply, notice: 'Reply was successfully updated.'
+        redirect_to tweets_path, notice: 'Reply was successfully updated.'
       else
         render :edit
       end
@@ -34,7 +34,7 @@ class RepliesController < ApplicationController
 
   def destroy
     @reply.destroy
-      redirect_to replies_url, notice: 'Reply was successfully destroyed.'
+      redirect_to tweets_path, notice: 'Reply was successfully destroyed.'
   end
 
   private

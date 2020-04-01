@@ -11,8 +11,8 @@
         <tbody>
             <% @tweets.each do |tweet| %>
                 <tr align="left">
-                    <th width="10%"><%= tweet.user_name %></th> 
-                    <th width="60%"><%= tweet.content %></th>
+                    <th width="15%"><%= tweet.user_name %></th> 
+                    <th width="55%"><%= tweet.content %></th>
                     <td width="10%"><%= link_to "Reply", reply_path(tweet) %></td>
                     <td width="10%"><%= link_to "Edit", edit_tweet_path(tweet) %></td>
                     <td width="10%"><%= link_to "Destroy", tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -20,8 +20,11 @@
                 <% rp = tweet.replies.order(id: "DESC") %>
                 <% rp.each do |reply| %>
                     <tr align="left">
-                        <td><%= reply.user_name %></td>
+                        <td align="right"><%= reply.user_name %></td>
                         <td><%= reply.comment %></td>
+                        <td></td>
+                        <td><%= link_to "Edit", edit_reply_path(reply) %></td>
+                        <td><%= link_to "Destroy", reply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                     </tr>
                 <% end %>
             <% end %>

@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params) # ストロングパラメーター処理後のtweet_paramsハッシュの情報を基にインスタンス化
     if @tweet.save
-        redirect_to @tweet, notice: '新規作成完了' # 9.1.6 redirect_to tweet_path(@book)の略
+        redirect_to tweets_path, notice: '新規作成完了' # 9.1.6 redirect_to tweet_path(@book)の略
     else
         render :new # 9.1.5 render action: :new の略
     end
@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
 
   def update
     if @tweet.update(tweet_params)
-        redirect_to tweet_path(@tweet), notice: '更新完了'
+        redirect_to tweets_path, notice: '更新完了'
     else
         render :edit
     end
