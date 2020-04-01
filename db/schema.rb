@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_154011) do
+ActiveRecord::Schema.define(version: 2020_04_01_003129) do
+
+  create_table "replies", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tweet_id", null: false
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "user_name"
+    t.index ["tweet_id"], name: "index_replies_on_tweet_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -18,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_154011) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "user_name"
+    t.text "comment"
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
@@ -34,5 +46,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_154011) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "replies", "tweets"
+  add_foreign_key "replies", "users"
   add_foreign_key "tweets", "users"
 end

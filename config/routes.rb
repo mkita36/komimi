@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  resources :replies, except:[:new] do
+    get:new, on: :member
+  end
+
   resources :tweets
+
   devise_for :users
+
   root 'tweets#index'
   get 'tweets/index'
   get 'tweets/new'
