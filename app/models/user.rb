@@ -6,4 +6,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   has_many :tweets
   has_many :replies
+  has_one :profile
 end

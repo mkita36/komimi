@@ -9,7 +9,7 @@
     <table border="1"> <!-- table要素を使い、ページを表で構成 -->
 
         <tbody>
-            <% @tweets.each do |tweet| %>
+            <% @tweets.order(id: "DESC").each do |tweet| %>
                 <tr align="left">
                     <th width="15%"><%= tweet.user_name %></th> 
                     <th width="55%"><%= tweet.content %></th>
@@ -17,8 +17,7 @@
                     <td width="10%"><%= link_to "Edit", edit_tweet_path(tweet) %></td>
                     <td width="10%"><%= link_to "Destroy", tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
-                <% rp = tweet.replies.order(id: "DESC") %>
-                <% rp.each do |reply| %>
+                <% tweet.replies.order(id: "DESC").each do |reply| %>
                     <tr align="left">
                         <td align="right"><%= reply.user_name %></td>
                         <td><%= reply.comment %></td>
@@ -33,7 +32,9 @@
 
     <p> name: <%= current_user.name %> </p>
     <p> mail: <%= current_user.email %> </p>
-    <%= link_to "ユーザー情報 参照/変更", edit_user_registration_path(current_user) %>
+    <%= link_to "アカウント情報 確認/変更", edit_user_registration_path(current_user) %>
+    <%= link_to "プロフィール 作成", profile_path(current_user) %>
+    <%= link_to "プロフィール 確認/変更", edit_profile_path(current_user) %>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 
 <% else %>

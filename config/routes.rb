@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  resources :profiles, except:[:new] do
+    get:new, on: :member
+  end
+
   resources :replies, except:[:new] do
     get:new, on: :member
   end

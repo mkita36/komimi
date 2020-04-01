@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  self_introduction: MyText
+  birth_year: 1
+  live_in: MyText
+
+two:
+  user: two
+  self_introduction: MyText
+  birth_year: 1
+  live_in: MyText

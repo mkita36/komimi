@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user_id %>
+</p>
+
+<p>
+  <strong>Self introduction:</strong>
+  <%= @profile.self_introduction %>
+</p>
+
+<p>
+  <strong>Birth year:</strong>
+  <%= @profile.birth_year %>
+</p>
+
+<p>
+  <strong>Live in:</strong>
+  <%= @profile.live_in %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
