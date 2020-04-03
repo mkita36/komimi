@@ -1,19 +1,13 @@
 Rails.application.routes.draw do
-  
-  resources :profiles, except:[:new] do
-    get:new, on: :member
-  end
+  root to: 'tweets#index'
 
-  resources :replies, except:[:new] do
-    get:new, on: :member
-  end
+  resources :profiles, except:%i[index destroy]
 
-  resources :tweets
+  resources :tweets do
+    resources :replies
+  end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-
-  root 'tweets#index'
-
 end

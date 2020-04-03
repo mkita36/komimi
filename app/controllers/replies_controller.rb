@@ -1,24 +1,25 @@
 class RepliesController < ApplicationController
+  berfor_action :set_tweet
   before_action :set_reply, only: [:show, :edit, :update, :destroy]
 
   def index
-    @replies = Reply.all
+    @replies = @tweet.replies
   end
 
   def show
   end
 
   def new
-    @reply = Reply.new(user_id: current_user.id, user_name: current_user.name, tweet_id: params[:id])
+    @reply = @tweet.replies.build(user: current_user)
   end
 
   def edit
   end
 
   def create
-    @reply = Reply.new(reply_params)
+    @reply = @tweet.replies.build(user: current_user, comment: reply_params[:comment])
       if @reply.save
-        redirect_to tweets_path, notice: 'Reply was successfully created.'
+        redirect_to tweet_path(@tweet), notice: 'Reply was successfully created.'
       else
         render :new
       end
@@ -26,7 +27,7 @@ class RepliesController < ApplicationController
 
   def update
       if @reply.update(reply_params)
-        redirect_to tweets_path, notice: 'Reply was successfully updated.'
+        redirect_to tweet_path(@tweet), notice: 'Reply was successfully updated.'
       else
         render :edit
       end
@@ -34,15 +35,21 @@ class RepliesController < ApplicationController
 
   def destroy
     @reply.destroy
-      redirect_to tweets_path, notice: 'Reply was successfully destroyed.'
+      redirect_to tweet_path(@tweet), notice: 'Reply was successfully destroyed.'
   end
 
   private
+
+    def set_tweet
+      @tweet = Tweet.find(params[:tweet_id])
+    end
+
     def set_reply
-      @reply = Reply.find(params[:id])
+      @reply = @tweet.replies.find(params[:id])
     end
 
     def reply_params
-      params.require(:reply).permit(:user_id, :user_name, :tweet_id, :comment)
+      params.require(:reply).permit(:comment)
     end
+
 end

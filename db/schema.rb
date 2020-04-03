@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_142102) do
+ActiveRecord::Schema.define(version: 2020_04_03_002125) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "self_introduction"
-    t.integer "birth_year"
-    t.text "live_in"
+    t.date "birthday"
+    t.string "live_in"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_04_01_142102) do
     t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "user_name"
     t.index ["tweet_id"], name: "index_replies_on_tweet_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
@@ -38,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_04_01_142102) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "user_name"
     t.text "comment"
     t.index ["user_id"], name: "index_tweets_on_user_id"
   end

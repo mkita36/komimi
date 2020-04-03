@@ -2,11 +2,11 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tweets = Tweet.all
+    @tweets = Curent_user.tweets.order(created_at: :desc)
   end
 
   def new
-    @tweet = Tweet.new(user_id: current_user.id, user_name: current_user.name)
+    @tweet = current_user.tweets.build
   end
 
   def edit
@@ -18,9 +18,9 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     if @tweet.save
-        redirect_to tweets_path, notice: '新規作成完了'
+      redirect_to tweets_path, notice: '新規作成完了'
     else
-        render :new
+      render :new
     end
   end
 
@@ -40,11 +40,11 @@ end
   private
 
   def set_tweet
-      @tweet = Tweet.find(params[:id])
+    @tweet = Tweet.find(params[:id])
   end
 
   def tweet_params
-      params.require(:tweet).permit(:content, :user_id, :user_name)
+    params.require(:tweet).permit(:content, :user_id)
   end
 
 end
