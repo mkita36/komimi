@@ -1,24 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @profile.user_id %>
+  <strong>プロフィール画像（後で実装）</strong>
+  <strong><%= current_user.name %></strong>
 </p>
 
 <p>
   <strong>Self introduction:</strong>
-  <%= @profile.self_introduction %>
+  <%= current_user.profile.self_introduction %>
 </p>
 
 <p>
-  <strong>Birth year:</strong>
-  <%= @profile.birth_year %>
+  <strong>Birthday:</strong>
+  <%= current_user.profile.birthday %>
 </p>
 
 <p>
   <strong>Live in:</strong>
-  <%= @profile.live_in %>
+  <%= current_user.profile.live_in %>
 </p>
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<%= link_to 'Edit profile', edit_profile_path(current_user) %>
+
+<p>
+  <% current_user.tweets.each do |tweet| %>
+    <tr align="left">
+      <p><%= tweet.content %>
+      <%= link_to "Edit", edit_tweet_path(tweet) %>
+      <%= link_to "Destroy", tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+  <% end %>
+</p>

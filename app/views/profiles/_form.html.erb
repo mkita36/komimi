@@ -11,19 +11,22 @@
     </div>
   <% end %>
 
+  <p>image<p>
+  <p>画像を選択（※後で実装）<p>
+  
   <div class="field">
     <%= form.label :self_introduction %>
     <%= form.text_area :self_introduction %>
   </div>
 
   <div class="field">
-    <%= form.label :birth_year %>
-    <%= form.number_field :birth_year %>
+    <%= form.label :birthday %>
+    <%= form.date_select :birthday, start_year: 1900, end_year: 2020 %>
   </div>
 
   <div class="field">
     <%= form.label :live_in %>
-    <%= form.text_area :live_in %>
+    <%= form.text_field :live_in %>
   </div>
 
   <%= form.hidden_field :user_id %>

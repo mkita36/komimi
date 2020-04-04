@@ -6,25 +6,13 @@
 
 	<h3><%= link_to "New Tweet", new_tweet_path %></h3>
 
-	<table border="1"> <!-- table要素を使い、ページを表で構成 -->
+	<table border="1">
 		<tbody>
 			<% @tweets.each do |tweet| %>
 				<tr align="left">
-					<th width="15%"><%= tweet.user_name %></th> 
 					<th width="55%"><%= tweet.content %></th>
-					<td width="10%"><%= link_to "Reply", reply_path(tweet) %></td>
 					<td width="10%"><%= link_to "Edit", edit_tweet_path(tweet) %></td>
 					<td width="10%"><%= link_to "Destroy", tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-				</tr>
-				<% tweet.replies.each do |reply| %>
-					<tr align="left">
-						<td align="right"><%= reply.user_name %></td>
-						<td><%= reply.comment %></td>
-						<td></td>
-						<td><%= link_to "Edit", edit_reply_path(reply) %></td>
-						<td><%= link_to "Destroy", reply, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-					</tr>
-				<% end %>
 			<% end %>
 		</tbody>
 	</table>
@@ -37,6 +25,6 @@
 	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 
 <% else %>
-    <h4> <%= link_to "Sign in", new_user_session_path, class: 'post' %> </h4> <!-- ログイン画面に移行する -->
-    <h4> <%= link_to "Sign up", new_user_registration_path, class: 'post' %> </h4> <!--新規登録画面に移行する -->
+    <h4> <%= link_to "Sign in", new_user_session_path, class: 'post' %> </h4>
+    <h4> <%= link_to "Sign up", new_user_registration_path, class: 'post' %> </h4>
 <% end %>

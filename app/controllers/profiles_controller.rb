@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  # before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def show
   end
@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(profile_params)
       if @profile.save
-        redirect_to tweets_path, notice: 'Profile was successfully created.'
+        redirect_to profile_path(@profile), notice: 'Profile was successfully created.'
       else
         render :new
       end
@@ -23,7 +23,7 @@ class ProfilesController < ApplicationController
 
   def update
       if current_user.profile.update(profile_params)
-        redirect_to tweets_path, notice: 'Profile was successfully updated.'
+        redirect_to profile_path(@profile), notice: 'Profile was successfully updated.'
       else
         render :edit
       end
@@ -31,9 +31,9 @@ class ProfilesController < ApplicationController
 
   private
 
-    # def set_profile
-    #   @profile = current_user.profile
-    # end
+    def set_profile
+      @profile = current_user.profile
+    end
 
     def profile_params
       params.require(:profile).permit(:user_id, :self_introduction, :birthday, :live_in)
