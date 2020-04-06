@@ -10,7 +10,7 @@ class RepliesController < ApplicationController
   end
 
   def new
-    @reply = @tweet.replies.build(user: current_user)
+    @reply = @tweet.build(user: current_user, comment: reply_params[:comment])
   end
 
   def edit

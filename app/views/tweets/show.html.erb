@@ -1,14 +1,9 @@
 <p id="notice"><%= notice %></p> <!-- 10.1.1 id属性に"notice"という名前をつけている -->
 
 <p>
-    <strong><%= @tweet.user.name %></strong>
-    <%= @tweet.content %>
-    <%= link_to "reply", new_tweet_reply_path(@tweet) %>
-</p>
-
-<p>
-    <strong><%= @tweet.user.name %></strong>
-    <%= @tweet.content %>
+	<strong><%= @tweet.user.name %></strong>
+	<%= @tweet.content %>
+	<%= link_to "reply", new_tweet_reply_path(@tweet) %>
 </p>
 
 <%= link_to "Edit", edit_tweet_path(@tweet) %> |
