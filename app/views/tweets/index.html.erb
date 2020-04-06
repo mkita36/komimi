@@ -1,4 +1,4 @@
-<h1>Twetter</h1>
+<h1>Time Line</h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -10,21 +10,14 @@
 		<tbody>
 			<% @tweets.each do |tweet| %>
 				<tr align="left">
-					<th width="55%"><%= tweet.content %></th>
-					<td width="10%"><%= link_to "Edit", edit_tweet_path(tweet) %></td>
-					<td width="10%"><%= link_to "Destroy", tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					<th width="20%"><%= tweet.user.name %></th>
+					<th width="70%"><%= tweet.content %></th>
+					<th width="10%"><%= link_to "Show", tweet_path(tweet) %></th>
 			<% end %>
 		</tbody>
 	</table>
 
-	<p> name: <%= current_user.name %> </p>
-	<p> mail: <%= current_user.email %> </p>
-	<%= link_to "アカウント情報 確認/変更", edit_user_registration_path(current_user) %>
-	<%= link_to "プロフィール 作成", profile_path(current_user) %>
-	<%= link_to "プロフィール 確認/変更", edit_profile_path(current_user) %>
-	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-
 <% else %>
-    <h4> <%= link_to "Sign in", new_user_session_path, class: 'post' %> </h4>
-    <h4> <%= link_to "Sign up", new_user_registration_path, class: 'post' %> </h4>
+	<h4> <%= link_to "Sign in", new_user_session_path, class: 'post' %> </h4>
+	<h4> <%= link_to "Sign up", new_user_registration_path, class: 'post' %> </h4>
 <% end %>
