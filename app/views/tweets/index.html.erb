@@ -1,4 +1,4 @@
-<h1>Time Line</h1>
+<h1>My Tweets</h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -6,16 +6,17 @@
 
 	<h3><%= link_to "New Tweet", new_tweet_path %></h3>
 
-	<table border="1">
-		<tbody>
-			<% @tweets.each do |tweet| %>
-				<tr align="left">
-					<th width="20%"><%= tweet.user.name %></th>
-					<th width="70%"><%= tweet.content %></th>
-					<th width="10%"><%= link_to "Show", tweet_path(tweet) %></th>
-			<% end %>
-		</tbody>
-	</table>
+	<tbody>
+		<% @tweets.each do |tweet| %>
+			<p>
+			<%= tweet.user.name %>
+			<%= tweet.content %>
+			<%= link_to "Show", tweet_path(tweet) %>
+			<%= link_to "Edit", edit_tweet_path(tweet) %>
+			<td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</p>
+		<% end %>
+	</tbody>
 
 <% else %>
 	<h4> <%= link_to "Sign in", new_user_session_path, class: 'post' %> </h4>

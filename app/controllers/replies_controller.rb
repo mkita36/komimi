@@ -1,16 +1,16 @@
 class RepliesController < ApplicationController
-  berfor_action :set_tweet
+  before_action :set_tweet, only: [:new, :edit, :update]
   before_action :set_reply, only: [:show, :edit, :update, :destroy]
 
   def index
-    @replies = @tweet.replies
+    @replies = current_user.replies
   end
 
   def show
   end
 
   def new
-    @reply = @tweet.build(user: current_user, comment: reply_params[:comment])
+    @reply = @tweet.replies.build(user: current_user)
   end
 
   def edit
@@ -26,11 +26,11 @@ class RepliesController < ApplicationController
   end
 
   def update
-      if @reply.update(reply_params)
-        redirect_to tweet_path(@tweet), notice: 'Reply was successfully updated.'
-      else
-        render :edit
-      end
+    if @reply.update(reply_params)
+      redirect_to tweet_replies_path, notice: 'Reply was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -49,7 +49,7 @@ class RepliesController < ApplicationController
     end
 
     def reply_params
-      params.require(:reply).permit(:comment)
+      params.require(:reply).permit(:comment, :user_id, :tweet_id)
     end
 
 end

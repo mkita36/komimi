@@ -33,6 +33,7 @@ class ProfilesController < ApplicationController
 
     def set_profile
       @profile = current_user.profile
+      logger.info(@profile.live_in)
     end
 
     def profile_params

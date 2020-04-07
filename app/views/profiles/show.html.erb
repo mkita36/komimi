@@ -9,27 +9,23 @@
 
 <p>
   <strong>Self introduction:</strong>
-  <%= current_user.profile.self_introduction %>
+  <%= @profile.self_introduction %>
 </p>
 
 <p>
   <strong>Birthday:</strong>
-  <%= current_user.profile.birthday %>
+  <%= @profile.birthday %>
 </p>
 
 <p>
   <strong>Live in:</strong>
-  <%= current_user.profile.live_in %>
+  <%= @profile.live_in %>
 </p>
 
 <%= link_to 'Edit Account', edit_profile_path(current_user) %>
 
-<p>
-  <% current_user.tweets.each do |tweet| %>
-    <tr align="left">
-      <p><%= tweet.content %>
-      <%= link_to "Edit", edit_tweet_path(tweet) %>
-      <%= link_to "Destroy", tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </p>
-  <% end %>
-</p>
+<br>
+<br>
+
+<strong><%= link_to 'My Tweets', tweets_path(current_user) %></strong>
+<strong><%= link_to 'My replies', tweet_replies_path(current_user) %></strong>
