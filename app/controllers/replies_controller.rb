@@ -1,12 +1,9 @@
 class RepliesController < ApplicationController
-  before_action :set_tweet, only: [:new, :edit, :update]
-  before_action :set_reply, only: [:show, :edit, :update, :destroy]
+  before_action :set_tweet, only: [:new, :edit, :create, :update]
+  before_action :set_reply, only: [:edit, :update, :destroy]
 
   def index
     @replies = current_user.replies
-  end
-
-  def show
   end
 
   def new

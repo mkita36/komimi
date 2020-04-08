@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
   end
 
   def show
+    @replies = @tweet.replies.order(created_at: :desc)
   end
 
   def create
