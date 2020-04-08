@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
 
   def index
     @tweets = current_user.tweets.order(created_at: :desc)
+    @tweet = current_user.tweets.build
   end
 
   def new
@@ -18,10 +19,14 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweet_params)
-    if @tweet.save
-      redirect_to tweets_path, notice: '新規作成完了'
-    else
-      render :new
+    respond_to do |format|
+      if @tweet.save
+        format.js
+        # redirect_to tweets_path, notice: '新規作成完了'
+      else
+        format.js { head :no_content}
+        # render :new
+      end
     end
   end
 

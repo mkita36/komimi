@@ -1,7 +1,7 @@
-<%= form_with(model: tweet, local: true) do |form| %> <!-- form_withヘルパーメソッドのmodelオプションでbookモデルを指定 -->
-	<% if tweet.errors.any? %> <!-- 6.1.10 エラーの有無を判断している -->
+<%= form_with(model: tweet, id: "tweet_form") do |form| %>
+	<% if tweet.errors.any? %>
 		<div id="errors_explanation" >
-			<h2> <%= pluralize(tweet.errors.count, "error") %> prohibited this book from being saved: </h2> <!-- 13.1.1 errorの数を数えて、それに応じてerrorを複数形にするか単数系にするか判断している -->
+			<h2> <%= pluralize(tweet.errors.count, "error") %> prohibited this book from being saved: </h2>
 
 			<ul>
 				<%= tweet.errors.full_messages.each do |message| %>
@@ -12,14 +12,13 @@
 	<% end %>
 
 	<div class="field">
-		<%= form.label :content %>
+		<%= form.label :content, "New Tweet" %>
 		<%= form.text_field :content %>
 	</div>
 
 	<%= form.hidden_field :user_id %>
-	<%= form.hidden_field :user_name %>
 	
 	<div class="actions">
-		<%= form.submit "OK" %> <!-- 10.4.3 modelオプションを使用した場合は、new/editアクションによって生成された画面のデータは、次のcreate/updateアクションにルーティングされるというルールになっている-->
+		<%= form.submit "OK" %>
 	</div>
 <% end %>

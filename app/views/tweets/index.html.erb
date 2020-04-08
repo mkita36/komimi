@@ -4,19 +4,11 @@
 
 <% if user_signed_in? %>
 
-	<h3><%= link_to "New Tweet", new_tweet_path %></h3>
+<%= render partial: 'form', locals: {tweet: @tweet} %>
 
-	<tbody>
-		<% @tweets.each do |tweet| %>
-			<p>
-			<%= tweet.user.name %>
-			<%= tweet.content %>
-			<%= link_to "Show", tweet_path(tweet) %>
-			<%= link_to "Edit", edit_tweet_path(tweet) %>
-			<td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			</p>
-		<% end %>
-	</tbody>
+<p id="tweets">
+<%= render @tweets %>
+</p>
 
 <% else %>
 	<h4> <%= link_to "Sign in", new_user_session_path, class: 'post' %> </h4>
