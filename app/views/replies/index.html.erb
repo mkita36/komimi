@@ -1,7 +1,5 @@
 <h1>My Replies</h1>
 
-<p id="notice"><%= notice %></p>
-
 <tbody>
   <% @replies.each do |reply| %>
     <% tweet = Tweet.find(reply.tweet_id) %>
@@ -13,7 +11,7 @@
       <%= reply.user.name %>
       <%= reply.comment %>
       <%= link_to "Edit", edit_tweet_reply_path(tweet, reply) %>
-      <%= link_to 'Destroy', tweet_reply_path(tweet, reply), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Destroy', tweet_reply_path(tweet, reply), method: :delete, data: { confirm: '本当に削除しますか？' } %>
     </p>
     <br>
   <% end %>

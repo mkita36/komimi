@@ -1,13 +1,14 @@
 class RepliesController < ApplicationController
-  before_action :set_tweet, only: [:new, :edit, :create, :update]
+  before_action :set_tweet, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_reply, only: [:edit, :update, :destroy]
 
   def index
-    @replies = current_user.replies
+    @replies = current_user.replies.order(created_at: :desc)
   end
 
   def new
-    @reply = @tweet.replies.build(user: current_user)
+    @reply = current_user.replies.build(tweet_id: @tweet)
+    # @reply = @tweet.replies.build(user: current_user)
   end
 
   def edit
@@ -42,11 +43,11 @@ class RepliesController < ApplicationController
     end
 
     def set_reply
-      @reply = @tweet.replies.find(params[:id])
+      @reply = current_user.replies.find(params[:id])
     end
 
     def reply_params
-      params.require(:reply).permit(:comment, :user_id, :tweet_id)
+      params.require(:reply).permit(:comment)
     end
 
 end
