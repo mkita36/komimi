@@ -1,7 +1,17 @@
-<h1>TimeLine</h1>
-
-<%= render partial: 'tweets/form', locals: {tweet: @tweet} %>
-
-<p id="tweets">
-<%= render @timelines %>
-</p>
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th>Home</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th><%= render partial: 'tweets/form', locals: {tweet: @tweet} %></th>
+    </tr>
+    <tr>
+      <th id="tweets">
+      <%= render @timelines %>
+      </th>
+    </tr>
+  </tbody>
+</table>

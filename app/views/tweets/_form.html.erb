@@ -11,14 +11,16 @@
 		</div>
 	<% end %>
 
-	<div class="field">
-		<%= form.label :content, "New Tweet" %>
-		<%= form.text_area :content %>
+	<%= form.hidden_field :user_id %>
+
+	<div class="d-flex align-items-baseline">
+		<div class="field">
+			<%= form.label :content, "New Tweet" %>
+			<%= form.text_area :content %>
+		</div>
+		<div class="actions">
+			<%= form.submit "OK" %>
+		</div>
 	</div>
 
-	<%= form.hidden_field :user_id %>
-	
-	<div class="actions">
-		<%= form.submit "OK" %>
-	</div>
 <% end %>

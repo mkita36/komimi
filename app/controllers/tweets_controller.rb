@@ -39,7 +39,7 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    current_user.tweet.destroy
+    @tweet.destroy
     redirect_to timelines_index_url, notice: '削除完了'
   end
 

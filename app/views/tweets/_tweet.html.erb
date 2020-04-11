@@ -1,9 +1,13 @@
-<p>
-  <%= tweet.user.name %>
-  <%= tweet.content %>
-  <%= link_to "Show", tweet_path(tweet) %>
-  <% if controller.controller_name == "tweets" %>
-    <%= link_to "Edit", edit_tweet_path(tweet) %>
-    <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+<tr>
+  <th><%= tweet.user.name %></th>
+<tr/>
+<tr>
+  <td class="position-relative"><%= tweet.content %></td>
+  <td><%= link_to "", tweet_path(tweet), class: "stretched-link" %></td>
+</tr>
+<tr>
+  <% if controller.controller_name == "tweets" %></th>
+    <th><%= link_to "Edit", edit_tweet_path(tweet) %></th>
+    <th><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: '本当に削除しますか？' } %></th>
   <% end %>
-</p>
+<tr/>

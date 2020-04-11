@@ -17,7 +17,7 @@ class RepliesController < ApplicationController
   def create
     @reply = @tweet.replies.build(user: current_user, comment: reply_params[:comment])
       if @reply.save
-        redirect_to tweet_path(@tweet), notice: 'Reply was successfully created.'
+        redirect_to tweet_path(@tweet), notice: 'Reply完了'
       else
         render :new
       end
