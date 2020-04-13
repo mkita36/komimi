@@ -2,8 +2,8 @@
   <th><%= tweet.user.name %></th>
 <tr/>
 <tr>
-  <td class="position-relative"><%= tweet.content %></td>
-  <td><%= link_to "", tweet_path(tweet), class: "stretched-link" %></td>
+  <td><%= tweet.content %></td>
+  <td><%= link_to "show", tweet_path(tweet)%></td>
 </tr>
 <tr>
   <% if controller.controller_name == "tweets" %></th>
