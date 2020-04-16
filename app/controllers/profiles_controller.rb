@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = current_user.build_profile
+    render :layout => false
   end
 
   def edit
@@ -36,7 +37,7 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:self_introduction, :birthday, :live_in)
+      params.require(:profile).permit(:self_introduction, :birthday, :live_in, :image)
     end
 
 end

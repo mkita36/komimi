@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title>Twitter</title>
@@ -10,21 +11,30 @@
   </head>
 
   <body>
-    <header>
-      <p id="notice"><%= notice %></p> 
-    </header>
-    <div class= "main">
-      <%= yield %>
+    <div class="container-fluid text-light" style="background-color: rgb(21, 32, 43)">
+      <header id="notice">
+        <%= notice %>
+      </header>
+
+      <div class= "main">
+        <%= yield %>
+      </div>
+
+      <br>
+
+      <footer>
+        <div class="row justify-content-around border-secondary border-top">
+          <div>
+            <%= link_to "・My Account", profile_path(id: current_user.id), class:"btn btn-link" %>
+          </div>
+          <div>
+            <%= link_to "・TimeLine", timelines_index_path, class:"btn btn-link" %>
+          </div>
+            <%= link_to "・Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-link" %>
+          </div>
+        </div>
+      </footer>
     </div>
-    <footer>
-      <hr>
-      <ul>
-        <p>
-        <%= link_to "・My Account", profile_path(id: current_user.id) %>
-        <%= link_to "・TimeLine", timelines_index_path %>
-        <%= link_to "・Sign Out", destroy_user_session_path, method: :delete %>
-        </p>
-      </ul>
-    </footer>
   </body>
+
 </html>

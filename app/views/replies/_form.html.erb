@@ -1,4 +1,4 @@
-<%= form_with(model: [@tweet, reply], local: true) do |form| %>
+<%= form_with(model: [@tweet, reply]) do |form| %>
   <% if reply.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(reply.errors.count, "error") %> prohibited this reply from being saved:</h2>
@@ -11,16 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
+  <div class="row border border-secondary border-top-0">
+    <div class="col-3">
+      <%= image_tag current_user.profile.image.url %>
+    </div>
+    <div class="col-7">
+      <%= form.text_area :comment, :placeholder => "Tweet your reply", class: "form-control-plaintext text-white"%>
+    </div>
+    <div class="col-2 align-self-end">
+        <%= form.submit("Reply", class: "btn btn-primary") %>
+    </div>
   </div>
 
-  <%= form.hidden_field :user_id %>
-  <%= form.hidden_field :tweet_id %>
-  <%= form.hidden_field :reply_id %>
-
-  <div class="actions">
-    <%= form.submit "OK" %>
-  </div>
 <% end %>

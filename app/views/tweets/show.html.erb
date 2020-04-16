@@ -1,12 +1,30 @@
-<p>
-	<strong><%= @tweet.user.name %></strong>
-	<%= @tweet.content %>
-	<%= link_to "reply", new_tweet_reply_path(@tweet) %>
-</p>
+<div class="row align-items-center">
+  <div class="col-1">
+	  <div class="h3 font-weight-bold">
+      <%= link_to "←", root_path %>
+    </div>
+  </div>
+  <div class="col-11 h3">
+    Tweet
+  </div>
+</div>
 
-<% @replies.each do |reply| %>
-	<p>
-		<%= User.find(reply.user_id).name %>
-		<%= reply.comment %>
-	</p>
-<% end %>
+<div class="row border border-light border align-items-center">
+  <div class="col-3">
+    <%= image_tag Profile.find_by(user_id: @tweet.user.id).image.url %>
+  </div>
+  <div class="col-9">
+    <div class="row h4">
+      <%= @tweet.user.name %>
+    </div>
+    <div class="row h5">
+      <%= @tweet.content %>
+		</div>
+	</div>
+</div>
+
+<%= render partial: 'replies/form', locals: {reply: @reply} %>
+
+<div id="replies">
+	<%= render partial: 'replies/reply', collection: @replies, as: 'reply' %>
+</div>

@@ -1,29 +1,67 @@
-<h1>My Account</h1>
+<div class="row align-items-center">
+  <div class="col-1">
+  <div class="h3 font-weight-bold">
+      <%= link_to "←", timelines_index_path %>
+    </div>
+  </div>
+  <div class="col-11 h3">
+    <%= current_user.name %>
+  </div>
+</div>
 
-<p>
-  <strong>プロフィール画像（後で実装）</strong>
-  <strong><%= current_user.name %></strong>
-</p>
+<div class="row align-items-end">
+  <div class="col-3">
+    <%= image_tag @profile.image.url %>
+  </div>
+  <div class="col-9">
+    <button type="button" class="h3 btn btn-outline-primary font-weight-bold">
+      <%= link_to 'Edit Profile', edit_profile_path(current_user) %>
+    </button>
+  </div>
+</div>
 
-<p>
-  <strong>Self introduction:</strong>
-  <%= @profile.self_introduction %>
-</p>
+<br>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @profile.birthday %>
-</p>
+<div class="row">
+  <div class="col">
+    <%= simple_format(@profile.self_introduction) %>
+  </div>
+</div>
 
-<p>
-  <strong>Live in:</strong>
+<div class="row">
+  <div class="col-3 font-weight-bold">
+    Birthday:
+  </div>
+  <div class="col-9">
+    <%= @profile.birthday %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3 font-weight-bold">
+    Live in:
+  </div>
+  <div class="col-9">
   <%= @profile.live_in %>
-</p>
+  </div>
+</div>
 
-<%= link_to 'Edit Account', edit_profile_path(current_user) %>
+<div class="row text-white-50">
+  <div class="col-3">
+    🗓joined:
+  </div>
+  <div class="col-9">
+    <%= l @profile.created_at %>
+  </div>
+</div>
 
 <br>
-<br>
 
-<strong><%= link_to 'My Tweets', tweets_path(current_user) %></strong>
-<strong><%= link_to 'My replies', tweet_replies_path(current_user) %></strong>
+<div class="row h5">
+  <div class="col-3">
+    <%= link_to 'Tweets', tweets_path(current_user) %>
+  </div>
+  <div class="col-9">
+  <%= link_to 'Replies', tweet_replies_path(current_user) %>
+  </div>
+</div>

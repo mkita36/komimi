@@ -1,3 +1,12 @@
-<h1>My Account (edit)</h1>
+<div class="row align-items-center">
+  <div class="col-1">
+	  <div class="h3 font-weight-bold">
+      <%= link_to "←", root_path %>
+    </div>
+  </div>
+  <div class="col-11 h3">
+    Edit profile
+  </div>
+</div>
 
 <%= render 'form', profile: @profile %>

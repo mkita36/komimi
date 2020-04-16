@@ -1,18 +1,53 @@
-<h1>My Replies</h1>
+<div class="row align-items-center">
+  <div class="col-1">
+    <div class="h3 font-weight-bold">
+      <%= link_to "←", profile_path(id: current_user.id) %>
+    </div>
+  </div>
+  <div class="col-11 h3">
+    My Replies
+  </div>
+</div>
 
-<tbody>
-  <% @replies.each do |reply| %>
-    <% tweet = Tweet.find(reply.tweet_id) %>
-    <p>
-      <%= tweet.user.name %>
-      <%= tweet.content %>
-    </p>
-    <p>
-      <%= reply.user.name %>
-      <%= reply.comment %>
-      <%= link_to "Edit", edit_tweet_reply_path(tweet, reply) %>
-      <%= link_to 'Destroy', tweet_reply_path(tweet, reply), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-    </p>
-    <br>
-  <% end %>
-</tbody>
+<% @replies.each do |reply| %>
+  <% tweet = Tweet.find(reply.tweet_id) %>
+    <div class="row border border-secondary border align-items-center">
+      <div class="col-3">
+        <%= image_tag Profile.find_by(user_id: tweet.user_id).image.url %>
+      </div>
+      <div class="col-9">
+        <div class="row h4">
+          <%= tweet.user.name %>
+        </div>
+        <div class="row h5">
+          <%= tweet.content %>
+        </div>
+      </div>
+    </div>
+    <div class="row border border-secondary border-top-0 align-items-center">
+      <div class="col-3">
+        <%= image_tag current_user.profile.image.url %>
+      </div>
+      <div class="col-7">
+        <div class="row h5">
+          <%= current_user.name %>
+        </div>
+        <div class="row h6">
+          <%= reply.comment %>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="row">
+          <div class="col  text-center">
+            <%= link_to "Edit", edit_tweet_reply_path(tweet, reply) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col  text-center">
+            <%= link_to 'Destroy', tweet_reply_path(tweet, reply), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <br>
+<% end %>

@@ -1,14 +1,16 @@
-<h1>My Tweets</h1>
-
-<% if user_signed_in? %>
+<div class="row align-items-center">
+  <div class="col-1">
+	<div class="h3 font-weight-bold">
+      <%= link_to "←", profile_path(id: current_user.id) %>
+    </div>
+  </div>
+  <div class="col-11 h3">
+    My Tweets
+  </div>
+</div>
 
 <%= render partial: 'form', locals: {tweet: @tweet} %>
 
-<p id="tweets">
-<%= render @tweets %>
-</p>
-
-<% else %>
-	<h4> <%= link_to "Sign in", new_user_session_path, class: 'post' %> </h4>
-	<h4> <%= link_to "Sign up", new_user_registration_path, class: 'post' %> </h4>
-<% end %>
+<div id="tweets">
+	<%= render @tweets %>
+</div>

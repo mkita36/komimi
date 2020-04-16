@@ -1,0 +1,19 @@
+<div class="row border border-secondary border-top-0 align-items-center">
+  <div class="col-3">
+    <%= image_tag Profile.find_by(user_id: tweet.user.id).image.url %>
+  </div>
+  <div class="col-7">
+    <div class="row h5">
+      <%= tweet.user.name %>
+    </div>
+    <div class="row">
+      <%= simple_format(tweet.content) %>
+    </div>
+    <div class="row">
+      <%= link_to "", tweet_path(tweet), class:"stretched-link" %>
+    </div>
+  </div>
+  <div class="col-2 h4 align-self-end">
+    <%= link_to "💬", tweet_path(tweet)%>
+  </div>
+</div>

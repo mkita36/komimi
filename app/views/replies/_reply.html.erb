@@ -1,0 +1,13 @@
+<div class="row border border-secondary border-top-0 align-items-center">
+  <div class="col-3">
+    <%= image_tag Profile.find_by(user_id: reply.user.id).image.url %></th>
+  </div>
+  <div class="col-7">
+    <div class="row h5">
+      <%= User.find(reply.user_id).name %>
+    </div>
+    <div class="row">
+      <%= simple_format(reply.comment) %>
+    </div>
+  </div>
+</div>

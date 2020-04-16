@@ -2,13 +2,8 @@ class TweetsController < ApplicationController
   before_action :set_my_tweet, only: [:edit, :update, :destroy]
   before_action :set_tweet, only: [:show]
   
-
   def index
     @tweets = current_user.tweets.order(created_at: :desc)
-    @tweet = current_user.tweets.build
-  end
-
-  def new
     @tweet = current_user.tweets.build
   end
 
@@ -17,6 +12,7 @@ class TweetsController < ApplicationController
 
   def show
     @replies = @tweet.replies.order(created_at: :desc)
+    @reply = current_user.replies.build
   end
 
   def create
@@ -32,7 +28,7 @@ class TweetsController < ApplicationController
 
   def update
     if @tweet.update(tweet_params)
-      redirect_to timelines_index_path, notice: '更新完了'
+      redirect_to tweets_url, notice: '更新完了'
     else
       render :edit
     end
@@ -40,7 +36,7 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet.destroy
-    redirect_to timelines_index_url, notice: '削除完了'
+    redirect_to tweets_url, notice: '削除完了'
   end
 
   private
@@ -54,7 +50,7 @@ class TweetsController < ApplicationController
     end
 
     def tweet_params
-      params.require(:tweet).permit(:content)
+      params.require(:tweet).permit(:user_id, :content)
     end
 
 end

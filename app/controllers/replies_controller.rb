@@ -1,14 +1,9 @@
 class RepliesController < ApplicationController
-  before_action :set_tweet, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_tweet, only: [:edit, :create, :update, :destroy]
   before_action :set_reply, only: [:edit, :update, :destroy]
 
   def index
     @replies = current_user.replies.order(created_at: :desc)
-  end
-
-  def new
-    @reply = current_user.replies.build(tweet_id: @tweet)
-    # @reply = @tweet.replies.build(user: current_user)
   end
 
   def edit
@@ -16,16 +11,20 @@ class RepliesController < ApplicationController
 
   def create
     @reply = @tweet.replies.build(user: current_user, comment: reply_params[:comment])
+    respond_to do |format|
       if @reply.save
-        redirect_to tweet_path(@tweet), notice: 'Reply完了'
+        format.js
+        # redirect_to tweet_path(@tweet), notice: 'Reply完了'
       else
-        render :new
+        format.js { head :no_content} 
+        # render :new
       end
+    end
   end
 
   def update
     if @reply.update(reply_params)
-      redirect_to tweet_replies_path, notice: 'Reply was successfully updated.'
+      redirect_to tweet_replies_path, notice: '更新完了'
     else
       render :edit
     end
@@ -33,7 +32,7 @@ class RepliesController < ApplicationController
 
   def destroy
     @reply.destroy
-      redirect_to tweet_path(@tweet), notice: 'Reply was successfully destroyed.'
+      redirect_to tweet_replies_path, notice: '削除完了'
   end
 
   private

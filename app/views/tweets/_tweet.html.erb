@@ -1,13 +1,30 @@
-<tr>
-  <th><%= tweet.user.name %></th>
-<tr/>
-<tr>
-  <td><%= tweet.content %></td>
-  <td><%= link_to "show", tweet_path(tweet)%></td>
-</tr>
-<tr>
-  <% if controller.controller_name == "tweets" %></th>
-    <th><%= link_to "Edit", edit_tweet_path(tweet) %></th>
-    <th><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: '本当に削除しますか？' } %></th>
-  <% end %>
-<tr/>
+<div class="row border border-secondary border-top-0 align-items-center">
+  <div class="col-3">
+    <%= image_tag current_user.profile.image.url %>
+  </div>
+  <div class="col-7">
+    <div class="row">
+      <%= current_user.name %>
+    </div>
+    <div class="row">
+      <%= simple_format(tweet.content) %>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="row">
+      <div class="col  text-center">
+        <%= link_to "show", tweet_path(tweet)%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col  text-center">
+        <%= link_to "Edit", edit_tweet_path(tweet) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col  text-center">
+        <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+      </div>
+    </div>
+  </div>
+</div>
