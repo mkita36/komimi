@@ -14,10 +14,8 @@ class RepliesController < ApplicationController
     respond_to do |format|
       if @reply.save
         format.js
-        # redirect_to tweet_path(@tweet), notice: 'Reply完了'
       else
-        format.js { head :no_content} 
-        # render :new
+        format.js { head :no_content}
       end
     end
   end
@@ -32,7 +30,7 @@ class RepliesController < ApplicationController
 
   def destroy
     @reply.destroy
-      redirect_to tweet_replies_path, notice: '削除完了'
+    redirect_to tweet_replies_path, notice: '削除完了'
   end
 
   private
@@ -48,5 +46,4 @@ class RepliesController < ApplicationController
     def reply_params
       params.require(:reply).permit(:comment)
     end
-
 end

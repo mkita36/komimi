@@ -1,8 +1,8 @@
-<div class="row border border-secondary border-top-0 align-items-center">
+<div class="row border-bottom border-secondary align-items-center">
   <div class="col-3">
     <%= image_tag current_user.profile.image.url %>
   </div>
-  <div class="col-7">
+  <div class="col-6">
     <div class="row">
       <%= current_user.name %>
     </div>
@@ -10,20 +10,20 @@
       <%= simple_format(tweet.content) %>
     </div>
   </div>
-  <div class="col-2">
+  <div class="col-3">
     <div class="row">
       <div class="col  text-center">
-        <%= link_to "show", tweet_path(tweet)%>
+        <%= link_to "詳細", tweet_path(tweet)%>
       </div>
     </div>
     <div class="row">
       <div class="col  text-center">
-        <%= link_to "Edit", edit_tweet_path(tweet) %>
+        <%= link_to "編集", edit_tweet_path(tweet) %>
       </div>
     </div>
     <div class="row">
       <div class="col  text-center">
-        <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        <%= link_to '削除', tweet, method: :delete, data: { confirm: '本当に削除しますか？' } %>
       </div>
     </div>
   </div>

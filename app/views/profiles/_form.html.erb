@@ -16,10 +16,10 @@
 
     <div class="col rounded" style="background-color: rgb(21, 44, 66)">
       <label>
-        <%= form.label :Image %>
+        <%= form.label :プロフィール画像 %>
         <br>
         <div class="row btn btn-link">
-          Chose File
+          画像ファイルを選択
           <%= form.file_field :image, style:"display:none" %>
         </div>
       </label>
@@ -29,7 +29,7 @@
     
     <div class="col rounded" style="background-color: rgb(21, 44, 66)">
       <div>
-        <%= form.label :Bio %>
+        <%= form.label :自己紹介 %>
         <%= form.text_area :self_introduction, class: "form-control-plaintext text-white" %>
       </div>
     </div>
@@ -38,7 +38,7 @@
     
     <div class="col rounded" style="background-color: rgb(21, 44, 66)">
       <div>
-        <%= form.label :Location %>
+        <%= form.label :居住地 %>
         <%= form.text_field :live_in, class: "form-control-plaintext text-white" %>
       </div>
     </div>
@@ -47,7 +47,7 @@
     
     <div class="col rounded" style="background-color: rgb(21, 44, 66)">
       <div>
-        <%= form.label :"Birth date" %>
+        <%= form.label :"誕生日" %>
         <%= form.date_field :birthday, :placeholder => "0000-00-00", class: "form-control-plaintext text-white" %>
       </div>
     </div>
@@ -55,7 +55,7 @@
     <br>
     
     <div class="actions">
-      <%= form.submit("Save", class: "btn btn-primary") %>
+      <%= form.submit("登録", class: "btn btn-primary") %>
     </div>
   </div>
 

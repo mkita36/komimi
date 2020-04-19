@@ -1,1 +1,8 @@
+$theme-colors: (
+  dark: rgb(21, 32, 43),
+  info: rgb(21, 44, 66)
+);
+
 @import "bootstrap";
+
+@import '@fortawesome/fontawesome-free/scss/fontawesome';

@@ -15,11 +15,11 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = current_user.build_profile(profile_params)
-      if @profile.save
-        redirect_to profile_path(@profile), notice: 'Profile was successfully created.'
-      else
-        render :new
-      end
+    if @profile.save
+      redirect_to profile_path(@profile), notice: 'Profile was successfully created.'
+    else
+      render :new
+    end
   end
 
   def update

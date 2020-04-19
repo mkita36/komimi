@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
   <head>
     <title>Twitter</title>
@@ -11,30 +10,38 @@
   </head>
 
   <body>
-    <div class="container-fluid text-light" style="background-color: rgb(21, 32, 43)">
-      <header id="notice">
-        <%= notice %>
-      </header>
-
-      <div class= "main">
-        <%= yield %>
-      </div>
-
-      <br>
-
-      <footer>
-        <div class="row justify-content-around border-secondary border-top">
-          <div>
-            <%= link_to "・My Account", profile_path(id: current_user.id), class:"btn btn-link" %>
+    <div class="container bg-dark text-light">
+      <div class="row">
+        <div class="col-2 col-lg-1 text-center h3">
+          <button type="button" class="btn btn-dark btn-lg ">
+            <%= link_to root_path, style: "color: white" do %>
+              <i class="fas fa-dove"></i>
+            <% end %>
+          </bottun>
+          <button type="button" class="btn btn-dark btn-lg ">
+            <%= link_to profile_path(id: current_user.id), style: "color: white" do %>
+              <i class="fas fa-user-circle"></i>
+            <% end %>
+          </bottun>
+          <button type="button" class="btn btn-dark btn-lg ">
+            <%= link_to destroy_user_session_path, method: :delete, style: "color: white" do %>
+              <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          </bottun>
+        </div>
+        <div class="col-9 col-lg-10 border-left border-right border-secondary">
+          <div id="notice">
+            <%= notice %>
           </div>
           <div>
-            <%= link_to "・TimeLine", timelines_index_path, class:"btn btn-link" %>
+            <%= yield %>
           </div>
-            <%= link_to "・Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-link" %>
+          </div>
+        <div class="col-1 col-lg-1">
+          <div class="row">
           </div>
         </div>
-      </footer>
+      </div>
     </div>
   </body>
-
 </html>

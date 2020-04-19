@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 
-<div class="row border border-secondary border">
+<div class="row border-top border-bottom border-secondary">
   <div class="col h3">
     Home
   </div>
@@ -13,6 +13,6 @@
 </div>
 
 <% else %>
-	<h4> <%= link_to "Sign in", new_user_session_path, class: 'post' %> </h4>
-	<h4> <%= link_to "Sign up", new_user_registration_path, class: 'post' %> </h4>
+	<h4> <%= link_to "ログイン", new_user_session_path, class: 'post' %> </h4>
+	<h4> <%= link_to "新規登録", new_user_registration_path, class: 'post' %> </h4>
 <% end %>
