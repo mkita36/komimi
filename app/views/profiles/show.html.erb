@@ -1,34 +1,30 @@
 <div class="row align-items-center">
   <div class="col-1">
-  <div class="h3 font-weight-bold">
-      <%= link_to "←", root_path %>
+    <div class="h3 font-weight-bold">
+      <%= link_to "←", :back %>
     </div>
   </div>
   <div class="col-11 h3">
-    <%= current_user.name %>
+    <%= User.find(@profile.user_id).name %>
   </div>
 </div>
 
-<div class="row">
+<div class="row align-items-end">
   <div class="col-3">
     <%= image_tag @profile.image.url %>
   </div>
-  <div class="col-9">
-    <div class="row">
+  <% if @profile.user_id == current_user.id %>
+    <div class="col-6">
       <button type="button" class="btn btn-sm btn-outline-primary">
         <%= link_to 'プロフィール編集', edit_profile_path(current_user) %>
       </button>
     </div>
-    <br>
-    <div class="row h5">
-      <div class="col">
-        <%= link_to 'Tweets', tweets_path(current_user) %>
-      </div>
-      <div class="col">
+    <div class="col-3">
+      <button type="button" class="btn btn-sm btn-outline-primary">
         <%= link_to 'Replies', tweet_replies_path(current_user) %>
-      </div>
+      </button>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <br>
@@ -40,7 +36,7 @@
 </div>
 
 <div class="row">
-  <div class="col-3 font-weight-bold">
+  <div class="col-3">
     誕生日:
   </div>
   <div class="col-9">
@@ -49,7 +45,7 @@
 </div>
 
 <div class="row">
-  <div class="col-3 font-weight-bold">
+  <div class="col-3">
     居住地:
   </div>
   <div class="col-9">
@@ -57,7 +53,7 @@
   </div>
 </div>
 
-<div class="row text-secondary">
+<div class="row">
   <div class="col-3">
     登録日:
   </div>
@@ -65,3 +61,11 @@
     <%= l @profile.created_at, format: :date_only %>
   </div>
 </div>
+
+<div class="row border-top border-bottom border-secondary">
+  <div class="col">
+    Tweets
+  </div>
+</div>
+
+<%= render @tweets %>

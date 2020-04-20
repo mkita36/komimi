@@ -3,11 +3,12 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
+    @tweets = Tweet.where(user_id: params[:id]).order(created_at: :desc)
   end
 
   def new
     @profile = current_user.build_profile
-    render :layout => false
+    render layout: "login"
   end
 
   def edit
@@ -16,7 +17,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(profile_params)
     if @profile.save
-      redirect_to profile_path(@profile), notice: 'Profile was successfully created.'
+      redirect_to profile_path(@profile), notice: '新規登録完了'
     else
       render :new
     end
@@ -24,7 +25,7 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.profile.update(profile_params)
-      redirect_to profile_path(@profile), notice: 'Profile was successfully updated.'
+      redirect_to profile_path(@profile), notice: '更新完了'
     else
       render :edit
     end
@@ -33,7 +34,7 @@ class ProfilesController < ApplicationController
   private
 
     def set_profile
-      @profile = current_user.profile
+      @profile = Profile.find(params[:id])
     end
 
     def profile_params

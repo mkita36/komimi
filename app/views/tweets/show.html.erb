@@ -1,7 +1,7 @@
 <div class="row align-items-center border-top border-bottom border-secondary">
   <div class="col-1">
 	  <div class="h3 font-weight-bold">
-      <%= link_to "←", root_path %>
+      <%= link_to "←", :back %>
     </div>
   </div>
   <div class="col-11 h3">
@@ -14,12 +14,15 @@
     <%= image_tag Profile.find_by(user_id: @tweet.user.id).image.url %>
   </div>
   <div class="col-9">
-    <div class="row h4">
+    <div class="row">
       <%= @tweet.user.name %>
     </div>
-    <div class="row h5">
-      <%= @tweet.content %>
+    <div>
+    <%= safe_join(@tweet.content.split("\n"), tag(:br)) %>
 		</div>
+    <div class="text-secondary">
+      <%= l @tweet.created_at, format: :short %>
+    </div>
 	</div>
 </div>
 

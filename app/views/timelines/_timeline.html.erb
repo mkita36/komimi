@@ -1,16 +1,20 @@
 <div class="row border-bottom border-secondary align-items-center">
   <div class="col-3">
     <%= image_tag Profile.find_by(user_id: tweet.user.id).image.url %>
+    <%= link_to "", profile_path(id: tweet.user.id), class:"stretched-link" %>
   </div>
   <div class="col-7">
-    <div class="row h5">
+    <div class="row">
       <%= tweet.user.name %>
     </div>
-    <div class="row">
-      <%= simple_format(tweet.content) %>
+    <div>
+      <%= safe_join(tweet.content.split("\n"), tag(:br)) %>
     </div>
-    <div class="row">
+    <div>
       <%= link_to "", tweet_path(tweet), class:"stretched-link" %>
+    </div>
+    <div class="text-secondary">
+      <%= l tweet.created_at, format: :short %>
     </div>
   </div>
   <div class="col-2 h4 align-self-end">

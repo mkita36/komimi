@@ -1,13 +1,10 @@
 class TweetsController < ApplicationController
-  before_action :set_my_tweet, only: [:edit, :update, :destroy]
+  before_action :set_my_tweet, only: [:destroy]
   before_action :set_tweet, only: [:show]
   
   def index
     @tweets = current_user.tweets.order(created_at: :desc)
     @tweet = current_user.tweets.build
-  end
-
-  def edit
   end
 
   def show
@@ -26,17 +23,9 @@ class TweetsController < ApplicationController
     end
   end
 
-  def update
-    if @tweet.update(tweet_params)
-      redirect_to tweets_url, notice: '更新完了'
-    else
-      render :edit
-    end
-  end
-
   def destroy
     @tweet.destroy
-    redirect_to tweets_url, notice: '削除完了'
+    redirect_to profile_path(id: @tweet.user.id), notice: '削除完了'
   end
 
   private
