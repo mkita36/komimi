@@ -13,7 +13,7 @@
 
   <div class="row border-bottom border-secondary align-items-center">
     <div class="col-3">
-      <%= image_tag current_user.profile.image.url %>
+      <%= image_tag current_user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
     </div>
     <div class="col-6">
       <%= f.text_area :comment, placeholder: "Replyを入力", class: "form-control-plaintext text-white"%>

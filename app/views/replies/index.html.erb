@@ -13,7 +13,7 @@
   <% tweet = Tweet.find(reply.tweet_id) %>
     <div class="row border-bottom border-secondary align-items-center">
       <div class="col-3">
-        <%= image_tag Profile.find_by(user_id: tweet.user_id).image.url %>
+        <%= image_tag Profile.find_by(user_id: tweet.user_id).image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
       </div>
       <div class="col-9">
         <div class="row h4">
@@ -26,7 +26,7 @@
     </div>
     <div class="row border-bottom border-secondary align-items-center">
       <div class="col-3">
-        <%= image_tag current_user.profile.image.url %>
+        <%= image_tag current_user.profile.image %>
       </div>
       <div class="col-7">
         <div class="row h5">

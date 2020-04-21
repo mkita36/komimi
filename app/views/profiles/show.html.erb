@@ -11,7 +11,7 @@
 
 <div class="row align-items-end">
   <div class="col-3">
-    <%= image_tag @profile.image.url %>
+    <%= image_tag @profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
   </div>
   <% if @profile.user_id == current_user.id %>
     <div class="col-6">

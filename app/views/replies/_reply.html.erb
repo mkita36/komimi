@@ -1,6 +1,6 @@
 <div class="row border border-secondary border-top-0 align-items-center">
   <div class="col-3">
-    <%= image_tag Profile.find_by(user_id: reply.user.id).image.url %></th>
+    <%= image_tag Profile.find_by(user_id: reply.user.id).image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
   </div>
   <div class="col-7">
     <div class="row h5">

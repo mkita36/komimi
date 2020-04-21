@@ -13,11 +13,11 @@
 
 	<div class="row border-bottom border-secondary align-items-center">
 		<div class="col-3">
-			<%= image_tag current_user.profile.image.url %>
+			<%= image_tag current_user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
 			<%= link_to "", profile_path(id: current_user.id), class:"stretched-link" %>
 		</div>
 		<div class="col-6 col-md-7">
-			<%= f.text_area :content, size: "200×100", placeholder: "今日何があった？", class: "form-control-plaintext text-white"%>
+			<%= f.text_area :content, placeholder: "今日何があった？", class: "form-control-plaintext text-white"%>
 		</div>
 		<div class="col-3 col-md-2">
 			<%= f.submit("Tweet", class: "btn btn-sm btn-primary") %>
