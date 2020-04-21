@@ -15,14 +15,22 @@
   <div class="form-group">
 
     <div class="col rounded bg-info">
-      <label>
-        <%= f.label :プロフィール画像 %>
-        <br>
-        <div class="row btn btn-link">
-          画像ファイルを選択
-          <%= f.file_field :image, style:"display:none" %>
-        </div>
-      </label>
+
+      <div class="field image">
+        <label>
+          <%= f.label :プロフィール画像 %>
+            <div id="img_field" onClick="document.querySelector('#file').click()" >
+              <% if profile.image.present? %>
+                <%= image_tag profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+              <% else %>
+                <i class="fas fa-file-image"></i>
+              <% end %>
+            </div>
+          <div class="row btn btn-link">
+            <%= f.file_field :image, class:"image", style:"display:none", id: "file" %>
+          </div>
+        </label>
+      </div>
     </div>
 
     <br>
