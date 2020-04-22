@@ -5,9 +5,7 @@
     Home
   </div>
 </div>
-
 <%= render partial: 'timelines/form', locals: {tweet: @tweet} %>
-
 <div id="timelines">
   <%= render partial: 'timeline', collection: @timelines, as: 'tweet' %>
 </div>

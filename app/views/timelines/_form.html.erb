@@ -17,11 +17,10 @@
 			<%= link_to "", profile_path(id: current_user.id), class:"stretched-link" %>
 		</div>
 		<div class="col-6 col-md-7">
-			<%= f.text_area :content, placeholder: "今日何があった？", class: "form-control-plaintext text-white"%>
+			<%= f.text_area :content, placeholder: "つぶやいてみよう！", class: "form-control-plaintext text-white"%>
 		</div>
 		<div class="col-3 col-md-2">
 			<%= f.submit("Tweet", class: "btn btn-sm btn-primary") %>
 		</div>
 	</div>
-
 <% end %>

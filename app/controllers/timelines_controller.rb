@@ -1,7 +1,7 @@
 class TimelinesController < ApplicationController
 
   def index
-    @timelines = Tweet.all.order(created_at: :desc)
+    @timelines = Tweet.where(user: current_user).or(Tweet.where(user: current_user.following_user)).order(created_at: :desc)
     @tweet = current_user.tweets.build
   end
 

@@ -4,7 +4,6 @@
     <title>Twitter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,21 +12,26 @@
     <div class="container bg-dark text-light">
       <div class="row">
         <div class="col-2 col-lg-1 text-center h3">
-          <button type="button" class="btn btn-dark btn-lg ">
-            <%= link_to root_path, style: "color: white" do %>
+          <div>
+            <%= link_to root_path, style: "color: white", class:"btn btn-dark btn-lg" do %>
               <i class="fas fa-dove"></i>
             <% end %>
-          </bottun>
-          <button type="button" class="btn btn-dark btn-lg ">
-            <%= link_to profile_path(id: current_user.id), style: "color: white" do %>
+          </div>
+          <div>
+            <%= link_to profile_path(id: current_user.id), style:"color: white", class:"btn btn-dark btn-lg" do %>
               <i class="fas fa-user-circle"></i>
             <% end %>
-          </bottun>
-          <button type="button" class="btn btn-dark btn-lg ">
-            <%= link_to destroy_user_session_path, method: :delete, style: "color: white" do %>
+          </div>
+          <div>
+            <%= link_to users_path, style:"color: white", class:"btn btn-dark btn-lg" do %>
+              <i class="fas fa-users"></i>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to destroy_user_session_path, method: :delete, style:"color: white", class:"btn btn-dark btn-lg" do %>
               <i class="fas fa-sign-out-alt"></i>
             <% end %>
-          </bottun>
+          </div>
         </div>
         <div class="col-9 col-lg-10 border-left border-right border-secondary">
           <div id="notice">
