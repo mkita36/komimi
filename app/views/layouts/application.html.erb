@@ -8,18 +8,23 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="container bg-dark text-light">
-      <div class="row">
+  <body class="bg-dark">
+    <div class="container text-light">
+      <div class="row" style="min-height: 100vh">
         <div class="col-2 col-lg-1 text-center h3">
           <div>
             <%= link_to root_path, style: "color: white", class:"btn btn-dark btn-lg" do %>
-              <i class="fas fa-dove"></i>
+              <i class="fab fa-twitter"></i>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to root_path, style: "color: white", class:"btn btn-dark btn-lg" do %>
+              <i class="fas fa-home"></i>
             <% end %>
           </div>
           <div>
             <%= link_to profile_path(id: current_user.id), style:"color: white", class:"btn btn-dark btn-lg" do %>
-              <i class="fas fa-user-circle"></i>
+              <i class="fas fa-user"></i>
             <% end %>
           </div>
           <div>

@@ -1,7 +1,7 @@
 <div class="row align-items-center border-top border-bottom border-secondary">
   <div class="col-1">
     <div class="h3 font-weight-bold">
-      <%= link_to "←", :back %>
+      <%= link_to "←", profile_path(current_user) %>
     </div>
   </div>
   <div class="col-11 h3">
@@ -29,8 +29,12 @@
       <i class="fas fa-reply"></i>
     </div>
     <div class="col-3">
-      <%= image_tag current_user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
-    </div>
+      <% if current_user.profile.image.present? %>
+        <%= image_tag current_user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+      <% else %>
+        <i class="fas fa-user-circle fa-5x" style="color: silver"></i>
+      <% end %>
+      </div>
     <div class="col-6">
       <div class="row">
         <%= current_user.name %>
@@ -52,5 +56,4 @@
       </div>
     </div>
   </div>
-  <br>
 <% end %>

@@ -13,8 +13,12 @@
 
 	<div class="row border-bottom border-secondary align-items-center">
 		<div class="col-3">
-			<%= image_tag current_user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
-			<%= link_to "", profile_path(id: current_user.id), class:"stretched-link" %>
+			<% if current_user.profile.image.present? %>
+				<%= image_tag current_user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+				<%= link_to "", profile_path(id: current_user.id), class:"stretched-link" %>
+			<% else %>
+				<i class="fas fa-user-circle fa-5x" style="color: silver"></i>
+			<% end %>
 		</div>
 		<div class="col-6 col-md-7">
 			<%= f.text_area :content, placeholder: "つぶやいてみよう！", class: "form-control-plaintext text-white"%>

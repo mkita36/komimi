@@ -1,3 +1,32 @@
-<h1>Replyを編集</h1>
-
+<div class="row align-items-center border-top border-bottom border-secondary">
+  <div class="col-1">
+	  <div class="h3 font-weight-bold">
+      <%= link_to "←", tweet_replies_path(current_user) %>
+    </div>
+  </div>
+  <div class="col-11 h3">
+    Replyを編集
+  </div>
+</div>
+</div>
+<div class="row border-bottom border-secondary align-items-center">
+  <div class="col-3">
+    <% if Profile.find_by(user: @tweet.user).image.present? %>
+      <%= image_tag Profile.find_by(user_id: @tweet.user.id).image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+    <% else %>
+      <i class="fas fa-user-circle fa-5x" style="color: silver"></i>
+    <% end %>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <%= @tweet.user.name %>
+    </div>
+    <div>
+    <%= safe_join(@tweet.content.split("\n"), tag(:br)) %>
+		</div>
+    <div class="text-secondary">
+      <%= l @tweet.created_at, format: :short %>
+    </div>
+	</div>
+</div>
 <%= render 'form', reply: @reply %>

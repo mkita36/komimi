@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   def show
     @tweets = Tweet.where(user_id: params[:id]).order(created_at: :desc)
     @user = User.find(params[:id])
+    session[:path_back_from_tweet] = profile_path(@user)
   end
 
   def new

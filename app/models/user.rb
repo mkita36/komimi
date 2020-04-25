@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :tweets, dependent: :destroy
   has_many :replies, dependent: :destroy
   has_one :profile, dependent: :destroy
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
 
@@ -17,8 +17,9 @@ class User < ApplicationRecord
     follower.create(followed_id: user_id)
   end
 
-  def unfollow(user_id)
-    follower.find_by(followed_id: user_id).destroy
+  def unfollow(user)
+    followed = follower.find_by(followed: user)
+    followed.destroy if followed
   end
 
   def following?(user)
