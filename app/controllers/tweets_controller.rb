@@ -25,7 +25,7 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet.destroy
-    redirect_to profile_path(id: @tweet.user.id), notice: '削除完了'
+    redirect_to user_profile_path(current_user, current_user.profile), notice: '削除完了'
   end
 
   private

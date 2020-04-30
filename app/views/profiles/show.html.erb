@@ -19,7 +19,7 @@
   <% if @user.id == current_user.id %>
     <div class="col-6">
       <div>
-        <%= link_to 'プロフィール編集', edit_profile_path(current_user), class:"btn btn-sm btn-outline-primary" %>
+        <%= link_to 'プロフィール編集', edit_user_profile_path(current_user, current_user.profile), class:"btn btn-sm btn-outline-primary" %>
       </div>
     </div>
     <div class="col-3">
@@ -30,11 +30,11 @@
   <% else %>
     <% if current_user.following?(@user) %>
       <div>
-        <%= link_to 'フォローを外す', unfollow_path(@user.id), method: :POST, class: "btn btn-sm btn-outline-primary" %>
+        <%= link_to 'フォローを外す', unfollow_path(@user), method: :POST, class: "btn btn-sm btn-outline-primary" %>
       </div>
     <% else %>
       <div>
-        <%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-sm btn-primary text-info" %>
+        <%= link_to 'フォローする', follow_path(@user), method: :POST, class: "btn btn-sm btn-primary text-info" %>
       </div>
     <% end %>
   <% end %>
@@ -72,7 +72,9 @@
     誕生日:
   </div>
   <div class="col-7">
-    <%= l @profile.birthday, format: :default %>
+    <% if @profile.birthday.present? %>
+      <%= l @profile.birthday, format: :default%>
+    <% end %>
   </div>
 </div>
 <div class="row">
@@ -80,7 +82,7 @@
     居住地:
   </div>
   <div class="col-7">
-  <%= @profile.live_in %>
+    <%= @profile.live_in %>
   </div>
 </div>
 <div class="row">

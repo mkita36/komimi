@@ -13,10 +13,10 @@
     <div class="col-4">
       <% if user.profile.image.present? %>
         <%= image_tag user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
-        <%= link_to "", profile_path(id: user.id), class:"stretched-link" %>
+        <%= link_to "", user_profile_path(user, user.profile), class:"stretched-link" %>
       <% else %>
         <i class="fas fa-user-circle fa-5x" style="color: silver"></i>
-        <%= link_to "", profile_path(id: user.id), class:"stretched-link" %>
+        <%= link_to "", user_profile_path(user, user.profile), class:"stretched-link" %>
       <% end %>
     </div>
     <div class="col-8 h5">
@@ -26,11 +26,11 @@
       <div class="row">
         <% if current_user.following?(user) %>
           <div>
-            <%= link_to 'フォローを外す', unfollow_path(user.id), method: :POST, class: "btn btn-sm btn-outline-primary" %>
+            <%= link_to 'フォローを外す', unfollow_path(user), method: :POST, class: "btn btn-sm btn-outline-primary" %>
           </div>
         <% else %>
           <div>
-            <%= link_to 'フォローする', follow_path(user.id), method: :POST, class: "btn btn-sm btn-primary text-info" %>
+            <%= link_to 'フォローする', follow_path(user), method: :POST, class: "btn btn-sm btn-primary text-info" %>
           </div>
         <% end %>
       </div>
