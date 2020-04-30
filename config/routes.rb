@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   resources :profiles, except:[:index, :destroy]
   resources :timelines, only:[:index, :create]
-  resources :users, only: [:index]
+  resources :users, only:[:index]
   resources :tweets, except:[:new, :edit, :update] do
     resources :replies, except:[:show, :new]
   end
