@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
 
   # パスワードと確認用パスワードが一致しないと無効な状態であること
   it "is invalid with a password_confirmation not same as password" do
-    user = User.new(password: "111111", password_confirmation: "111112")
+    user = FactoryBot.build(:user, password: "111111", password_confirmation: "111112")
     user.valid?
     expect(user.errors[:password_confirmation]).to include("はパスワードと一致しません")
   end
