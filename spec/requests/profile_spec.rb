@@ -8,7 +8,7 @@ RSpec.describe "プロフィール", type: :request do
     end
     it '登録画面にアクセスすること' do
       get new_user_profile_path(@user)
-      expect(response.body).to include('プロフィール登録')
+      expect(response).to have_http_status(200)
     end
     it '登録していない場合、ルート画面から登録画面に転送されること' do
       get timelines_path
@@ -20,12 +20,6 @@ RSpec.describe "プロフィール", type: :request do
       post user_profiles_path(@user), params: { profile: profile.attributes }
       }.to change(Profile, :count).by(1)
     end
-    it '登録内容が反映されていること' do
-      profile = FactoryBot.build(:profile, user: @user)
-      post user_profiles_path(@user), params: { profile: profile.attributes }
-      expect(@user.profile.live_in).to include("東京都")
-      p @user.profile
-    end
     it '登録後、ユーザー一覧画面に転送されること' do
       profile = FactoryBot.build(:profile, user: @user)
       post user_profiles_path(@user), params: { profile: profile.attributes }
@@ -36,22 +30,36 @@ RSpec.describe "プロフィール", type: :request do
   describe '自分のプロフィールの確認・編集' do
     before do
       @user = FactoryBot.create(:user)
-      @profile = FactoryBot.create(:profile, user:@user)
+      @profile = FactoryBot.create(:profile, user: @user)
       sign_in @user
     end
     it '確認画面にアクセスすること' do
-      get user_profile_path(@user, @user.profile)
-      expect(response.body).to include("プロフィール編集")
+      get user_profile_path(@user, @profile)
+      expect(response).to have_http_status(200)
     end
     it '編集画面にアクセスすること' do
-      get edit_user_profile_path(@user, @user.profile)
-      expect(response.body).to include("登録")
+      get edit_user_profile_path(@user, @profile)
+      expect(response).to have_http_status(200)
     end
     it '編集すること' do
-      p @user.profile.attributes
-      profile = FactoryBot.build(:profile, self_introduction: "初めまして", live_in: "京都府京都市", birthday: "1992-02-02".to_date, user: @user)
-      patch user_profile_path(@user, @profile), params: { profile: profile.attributes }
-      expect(response).to redirect_to user_profile_path(@user, @user.profile)
+      @profile['self_introduction'] = 'はじめまして'
+      @profile['birthday'] = '1992-02-02'
+      patch user_profile_path(@user, @profile), params: {profile: @profile.attributes}
+      expect(response).to redirect_to user_profile_path(@user, @profile)
+    end
+  end
+
+  describe '他人のプロフィールの確認' do
+    before do
+      @user = FactoryBot.create(:user)
+      @profile = FactoryBot.create(:profile, user: @user)
+      sign_in @user
+    end
+    it '確認画面にアクセスすること' do
+      other_user = FactoryBot.create(:user)
+      other_profile = FactoryBot.create(:profile, user: other_user)
+      get user_profile_path(other_user, other_profile)
+      expect(response).to have_http_status(200)
     end
   end
 end

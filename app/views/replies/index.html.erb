@@ -13,7 +13,11 @@
   <% tweet = Tweet.find(reply.tweet_id) %>
   <div class="row border-bottom border-secondary align-items-center">
     <div class="col-3">
-      <%= image_tag Profile.find_by(user_id: tweet.user_id).image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+      <% if Profile.find_by(user_id: tweet.user_id).image.present? %>
+        <%= image_tag Profile.find_by(user_id: tweet.user_id).image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+      <% else %>
+        <i class="fas fa-user-circle fa-5x" style="color: silver"></i>
+      <% end %>
     </div>
     <div class="col-9">
       <div class="row">
