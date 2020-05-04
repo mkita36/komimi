@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "フォロー・フォロワー関係", type: :request do
+RSpec.describe 'フォロー・フォロワー関係', type: :request do
   describe 'ユーザー一覧確認・フォローする' do
     before do
       @user = FactoryBot.create(:user)

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Reply, type: :model do
 
-  it "有効なファクトリを持つこと" do
+  it '有効なファクトリを持つこと' do
     expect(FactoryBot.build(:reply)).to be_valid
   end
 

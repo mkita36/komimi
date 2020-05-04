@@ -22,7 +22,7 @@ class RepliesController < ApplicationController
 
   def update
     if @reply.update(reply_params)
-      redirect_to tweet_replies_path(current_user), notice: '更新完了'
+      redirect_to user_replies_path(current_user), notice: '更新完了'
     else
       render :edit
     end

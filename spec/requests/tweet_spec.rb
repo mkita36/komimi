@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "ツイート", type: :request do
+RSpec.describe 'ツイート', type: :request do
   describe 'タイムライン' do
     before do
       @user = FactoryBot.create(:user)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "プロフィール", type: :request do
+RSpec.describe 'プロフィール', type: :request do
   describe 'プロフィール登録' do
     before do
       @user = FactoryBot.create(:user)

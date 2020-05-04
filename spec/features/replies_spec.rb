@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'リプライ（JavaScript）', type: :feature do
+RSpec.feature 'JavaScriptでリプライ', type: :feature do
   before do
     @user = FactoryBot.create(:user)
     @other_user = FactoryBot.create(:user)
@@ -11,7 +11,7 @@ RSpec.feature 'リプライ（JavaScript）', type: :feature do
   end
   scenario 'リプライする', js: true do
     visit tweet_path(@tweet)
-    fill_in 'reply[comment]', with: '初めてのリプライです。'
+    fill_in 'reply[comment]', with: 'JavaScriptでお試しリプライ'
     expect{
     click_button 'commit'
     expect(page).to have_content 'Tweet'

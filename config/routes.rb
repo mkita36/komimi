@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   resources :timelines, only:[:index, :create]
   resources :users, only:[:index] do
     resources :profiles, except:[:index, :destroy]
+    resources :replies, only:[:index]
   end
   resources :tweets, except:[:new, :edit, :update] do
-    resources :replies, except:[:show, :new]
+    resources :replies, except:[:index, :show, :new]
   end
 
   post 'follow/:id', to: 'relationships#follow', as: 'follow'

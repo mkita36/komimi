@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "リプライ", type: :request do
+RSpec.describe 'リプライ', type: :request do
   describe '自分のリプライの確認・削除' do
     before do
       @user = FactoryBot.create(:user)
@@ -12,7 +12,7 @@ RSpec.describe "リプライ", type: :request do
       sign_in @user
     end
     it '確認画面にアクセスすること' do
-      get tweet_replies_path(@user)
+      get user_replies_path(@user)
       expect(response).to have_http_status(200)
     end
     it '編集画面にアクセスすること' do
@@ -23,7 +23,7 @@ RSpec.describe "リプライ", type: :request do
       get edit_tweet_reply_path(@other_tweet, @reply)
       @reply['comment'] = '修正しました'
       patch tweet_reply_path(@other_tweet, @reply), params: {reply: @reply.attributes}
-      expect(response).to redirect_to tweet_replies_path(@user)
+      expect(response).to redirect_to user_replies_path(@user)
     end
     it '削除すること' do
       expect {

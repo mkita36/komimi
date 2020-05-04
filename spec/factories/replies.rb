@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :reply do
-    comment { "初めてのツイートおめでとうございます。" }
+    comment { 'お試しリプライ' }
     association :user
     association :tweet
   end
