@@ -1,5 +1,5 @@
 class Reply < ApplicationRecord
   belongs_to :user
   belongs_to :tweet
-  validates :comment, length: {maximum: 140 }
+  validates :comment, presence: true, length: {maximum: 140 }
 end

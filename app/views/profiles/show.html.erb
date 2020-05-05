@@ -11,7 +11,7 @@
 <div class="row align-items-end">
   <div class="col-3">
     <% if @profile.image.present? %>
-      <%= image_tag @profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+      <%= image_tag @profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
     <% else %>
       <i class="fas fa-user-circle fa-5x" style="color: silver"></i>
     <% end %>

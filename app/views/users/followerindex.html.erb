@@ -12,7 +12,7 @@
   <div class="row border-bottom border-secondary align-items-center">
     <div class="col-4">
       <% if user.profile.image.present? %>
-        <%= image_tag user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+        <%= image_tag user.profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
         <%= link_to "", user_profile_path(user, user.profile), class:"stretched-link" %>
       <% else %>
         <i class="fas fa-user-circle fa-5x" style="color: silver"></i>

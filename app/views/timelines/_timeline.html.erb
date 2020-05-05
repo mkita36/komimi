@@ -1,7 +1,7 @@
 <div class="row border-bottom border-secondary align-items-center">
   <div class="col-3">
     <% if tweet.user.profile.image.present? %>
-      <%= image_tag tweet.user.profile.image.variant(combine_options:{resize:"80x80^",crop:"80x80+0+0",gravity: :center}).processed, class:"rounded-circle" %>
+      <%= image_tag tweet.user.profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
       <%= link_to "", user_profile_path(tweet.user.id, tweet.user.profile.id), class:"stretched-link" %>
     <% else %>
       <i class="fas fa-user-circle fa-5x" style="color: silver"></i>

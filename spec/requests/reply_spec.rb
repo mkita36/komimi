@@ -4,9 +4,9 @@ RSpec.describe 'リプライ', type: :request do
   describe '自分のリプライの確認・削除' do
     before do
       @user = FactoryBot.create(:user)
+      profile = FactoryBot.create(:profile, user: @user)
       @other_user = FactoryBot.create(:user)
-      @profile = FactoryBot.create(:profile, user: @user)
-      @other_profile = FactoryBot.create(:profile, user: @other_user)
+      profile = FactoryBot.create(:profile, user: @other_user)
       @other_tweet = FactoryBot.create(:tweet, user: @other_user)
       @reply = FactoryBot.create(:reply, user: @user, tweet: @other_tweet)
       sign_in @user
@@ -27,7 +27,7 @@ RSpec.describe 'リプライ', type: :request do
     end
     it '削除すること' do
       expect {
-      delete tweet_reply_path(@other_tweet, @reply)
+        delete tweet_reply_path(@other_tweet, @reply)
       }.to change(@user.replies, :count).by(-1)
     end
   end
