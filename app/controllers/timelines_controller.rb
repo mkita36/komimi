@@ -17,7 +17,7 @@ class TimelinesController < ApplicationController
       if @tweet.save
         format.js
       else
-        format.js { head :no_content}
+        format.js {render 'new'}
       end
     end
   end

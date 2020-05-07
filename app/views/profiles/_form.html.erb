@@ -1,8 +1,6 @@
 <%= form_with(model: [current_user, profile], local: true) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this @profile from being saved:</h2>
-
       <ul>
         <% profile.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -14,16 +12,21 @@
 
   <div class="form-group">
     <div class="col rounded bg-info">
-      <div class="field image">
+      <div class="field">
         <label>
-          <%= f.label :プロフィール画像 %>
-            <div id="img_field">
-              <% if profile.image.present? %>
-                <%= image_tag profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
-              <% else %>
-                <i class="fas fa-file-image"></i>
-              <% end %>
-            </div>
+          <div>
+            <%= f.label :プロフィール画像 %>
+          </div>
+          <div id="img_field" class="btn btn-link">
+            <% if profile.image.present? %>
+              <%= image_tag profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
+            <% else %>
+              <div>
+              <i class="fas fa-file-image"></i>
+              画像を選択
+              </div>
+            <% end %>
+          </div>
           <div class="row btn btn-link">
             <%= f.file_field :image, class:"image", style:"display:none", id: "file" %>
           </div>

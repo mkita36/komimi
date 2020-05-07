@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :profiles, except:[:index, :destroy]
     resources :replies, only:[:index]
   end
-  resources :tweets, except:[:new, :edit, :update] do
+  resources :tweets, only:[:show, :destroy] do
     resources :replies, except:[:index, :show, :new]
   end
 

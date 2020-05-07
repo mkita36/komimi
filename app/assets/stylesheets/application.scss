@@ -6,3 +6,7 @@ $theme-colors: (
 @import "bootstrap";
 
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
+
+#error_explanation {
+  color: red;
+}

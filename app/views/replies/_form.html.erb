@@ -1,8 +1,6 @@
 <%= form_with(model: [@tweet, reply]) do |f| %>
   <% if reply.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(reply.errors.count, "error") %> prohibited this reply from being saved:</h2>
-
       <ul>
         <% reply.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -24,6 +22,7 @@
     </div>
     <div class="col-5">
       <%= f.text_area :comment, placeholder: "Replyを入力", class: "form-control-plaintext text-white"%>
+			<div id="error_explanation"></div>
     </div>
     <div class="col-3">
       <%= f.submit("Reply", class: "btn btn-sm btn-primary") %>

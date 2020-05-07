@@ -1,3 +1,5 @@
 document.getElementById('replies').insertAdjacentHTML('AfterBegin', '<%= j(render 'replies/reply', reply: @reply) %>')
 
 document.getElementById('reply_comment').value = ''
+
+$('#error_explanation').html("");

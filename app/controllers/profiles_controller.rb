@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
     if @profile.save
       redirect_to users_path, notice: '新規登録完了。まずは誰かをフォローしてみよう！'
     else
-      render :new
+      render :new, layout: "login"
     end
   end
 
