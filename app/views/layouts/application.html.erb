@@ -42,12 +42,14 @@
         </div>
         <div class="col-9 col-lg-10 border-left border-right border-secondary">
           <% if notice %>
-            <div id="notice">
-          　　<p><%= notice %></p>
+            <div id="notice" class="notice">
+          　　<%= notice %>
             </div>
           <% end %>
           <% if alert %>
-            <p><%= alert %></p>
+            <div id="alert" class="alert">
+              <%= alert %>
+            </div>
           <% end %>
           <div>
             <%= yield %>

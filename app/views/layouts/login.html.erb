@@ -12,9 +12,16 @@
     <div class="container text-light">
       <div class="row justify-content-center">
         <div class="col-8 col-md-6">
-          <div id="notice", class="text-primary">
-            <%= notice %>
-          </div>
+          <% if notice %>
+            <div id="notice" class="notice">
+          　　<%= notice %>
+            </div>
+          <% end %>
+          <% if alert %>
+            <div id="alert" class="alert">
+              <%= alert %>
+            </div>
+          <% end %>
           <div>
             <%= yield %>
           </div>
