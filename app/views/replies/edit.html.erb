@@ -1,4 +1,4 @@
-<div class="row align-items-center border-top border-bottom border-secondary py-1">
+<div class="row align-items-center py-1">
   <div class="col-1">
 	  <div class="h3 font-weight-bold">
       <%= link_to "←", tweet_replies_path(current_user) %>
@@ -9,7 +9,7 @@
   </div>
 </div>
 </div>
-<div class="row border-bottom border-secondary align-items-center py-2">
+<div class="row border-top border-secondary align-items-center py-2">
   <%= render 'profiles/image', profile: Profile.find_by(user: @tweet.user) %>
   <div class="col-9">
     <div class="row">

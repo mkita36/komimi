@@ -1,5 +1,5 @@
 <%= form_with(model: tweet, url: timelines_path) do |f| %>
-	<div class="row border-bottom border-secondary align-items-center py-2">
+	<div class="row align-items-center py-2">
 		<div class="col-3">
 			<% if current_user.profile.image.present? %>
 				<%= image_tag current_user.profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
