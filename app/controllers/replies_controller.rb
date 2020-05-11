@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
-  before_action :set_tweet, only: [:edit, :create, :update, :destroy]
-  before_action :set_reply, only: [:edit, :update, :destroy]
+  before_action :set_tweet, only: %i(edit create update destroy)
+  before_action :set_reply, only: %i(edit update destroy)
 
   def index
     @replies = current_user.replies.order(created_at: :desc)

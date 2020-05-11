@@ -9,17 +9,11 @@
     </div>
   <% end %>
 
-  <div class="row border-bottom border-secondary align-items-center">
+  <div class="row border-bottom border-secondary align-items-center  py-2">
     <div class="col-1">
       <i class="fas fa-reply"></i>
     </div>
-    <div class="col-3">
-      <% if current_user.profile.image.present? %>
-        <%= image_tag current_user.profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
-      <% else %>
-        <i class="fas fa-user-circle fa-5x" style="color: silver"></i>
-      <% end %>
-    </div>
+    <%= render 'profiles/image', profile: current_user.profile %>
     <div class="col-5">
       <%= f.text_area :comment, placeholder: "Replyを入力", class: "form-control-plaintext text-white"%>
 			<div id="error_explanation"></div>

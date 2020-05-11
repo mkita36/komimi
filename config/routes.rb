@@ -7,13 +7,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
-  resources :timelines, only:[:index, :create]
-  resources :users, only:[:index] do
-    resources :profiles, except:[:index, :destroy]
-    resources :replies, only:[:index]
+  resources :timelines, only: %i(index create)
+  resources :users, only: [:index] do
+    resources :profiles, except: %i(index destroy)
+    resources :replies, only: [:index]
   end
-  resources :tweets, only:[:show, :destroy] do
-    resources :replies, except:[:index, :show, :new]
+  resources :tweets, only: %i(show destroy) do
+    resources :replies, except: %i(index show new)
   end
 
   post 'follow/:id', to: 'relationships#follow', as: 'follow'

@@ -1,4 +1,4 @@
-<div class="row align-items-center border-top border-bottom border-secondary">
+<div class="row align-items-center border-top border-bottom border-secondary py-1">
   <div class="col-1">
     <div class="h3 font-weight-bold">
       <%= link_to "←", user_profile_path(current_user, current_user.profile) %>
@@ -11,14 +11,8 @@
 
 <% @replies.each do |reply| %>
   <% tweet = Tweet.find(reply.tweet_id) %>
-  <div class="row border-bottom border-secondary align-items-center">
-    <div class="col-3">
-      <% if Profile.find_by(user_id: tweet.user_id).image.present? %>
-        <%= image_tag Profile.find_by(user_id: tweet.user_id).image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
-      <% else %>
-        <i class="fas fa-user-circle fa-5x" style="color: silver"></i>
-      <% end %>
-    </div>
+  <div class="row border-bottom border-secondary align-items-center py-2">
+  <%= render 'profiles/image', profile: Profile.find_by(user_id: tweet.user_id) %>
     <div class="col-9">
       <div class="row">
         <%= tweet.user.name %>
@@ -28,17 +22,11 @@
       </div>
     </div>
   </div>
-  <div class="row border-bottom border-secondary align-items-center">
+  <div class="row border-bottom border-secondary align-items-center py-2">
     <div class="col-1">
       <i class="fas fa-reply"></i>
     </div>
-    <div class="col-3">
-      <% if current_user.profile.image.present? %>
-        <%= image_tag current_user.profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
-      <% else %>
-        <i class="fas fa-user-circle fa-5x" style="color: silver"></i>
-      <% end %>
-      </div>
+    <%= render 'profiles/image', profile: current_user.profile %>
     <div class="col-6">
       <div class="row">
         <%= current_user.name %>

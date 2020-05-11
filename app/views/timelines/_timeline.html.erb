@@ -1,4 +1,4 @@
-<div class="row border-bottom border-secondary align-items-center">
+<div class="row border-bottom border-secondary align-items-center py-2">
   <div class="col-3">
     <% if tweet.user.profile.image.present? %>
       <%= image_tag tweet.user.profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
