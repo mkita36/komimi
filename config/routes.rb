@@ -7,9 +7,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   
+  resources :profiles, except: %i(index show destroy)
   resources :timelines, only: %i(index create)
   resources :users, only: [:index] do
-    resources :profiles, except: %i(index destroy)
+    resources :profiles, only: [:show]
     resources :replies, only: [:index]
   end
   resources :tweets, only: %i(show destroy) do

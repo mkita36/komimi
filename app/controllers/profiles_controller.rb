@@ -1,11 +1,11 @@
 class ProfilesController < ApplicationController
 
-  before_action :set_profile, only: %i(show edit update)
+  before_action :set_profile, only: %i(edit update)
 
   def show
-    @tweets = Tweet.where(user_id: params[:user_id]).order(created_at: :desc)
+    @profile = Profile.find(params[:id])
     @user = User.find(params[:user_id])
-    session[:path_back_from_tweet] = user_profile_path(@user, @user.profile)
+    @tweets = Tweet.where(user_id: params[:user_id]).order(created_at: :desc)
   end
 
   def new
@@ -36,7 +36,7 @@ class ProfilesController < ApplicationController
   private
 
     def set_profile
-      @profile = Profile.find_by(user_id: params[:user_id])
+      @profile = current_user.profile
     end
 
     def profile_params

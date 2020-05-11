@@ -13,7 +13,7 @@
   <% if @user.id == current_user.id %>
     <div class="col-6">
       <div>
-        <%= link_to 'プロフィール編集', edit_user_profile_path(current_user, current_user.profile), class:"btn btn-sm btn-outline-primary" %>
+        <%= link_to 'プロフィール編集', edit_profile_path(current_user), class:"btn btn-sm btn-outline-primary" %>
       </div>
     </div>
     <div class="col-3">
@@ -89,7 +89,7 @@
 </div>
 <div class="row border-top border-bottom border-secondary py-1">
   <div class="col">
-    Tweets
+    過去のTweet
   </div>
 </div>
 <%= render @tweets %>

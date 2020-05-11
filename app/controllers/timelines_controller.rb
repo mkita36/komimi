@@ -7,7 +7,7 @@ class TimelinesController < ApplicationController
       session[:path_back_from_profile] = root_path
       session[:path_back_from_tweet] = root_path
     else
-      redirect_to new_user_profile_path(current_user)
+      redirect_to new_profile_path(current_user)
     end
   end
 

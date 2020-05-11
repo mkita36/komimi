@@ -1,11 +1,13 @@
 <div class="row align-items-center py-1">
   <div class="col-1">
 	  <div class="h3 font-weight-bold">
-      <%= link_to "←", user_profile_path(current_user, current_user.profile) %>
+      <%= link_to "←", profile_path(current_user) %>
     </div>
   </div>
   <div class="col-11 h3">
     プロフィール編集
   </div>
 </div>
-<%= render 'form', profile: @profile %>
+<div class="border-bottom border-secondary">
+  <%= render 'form', profile: @profile %>
+</div>
