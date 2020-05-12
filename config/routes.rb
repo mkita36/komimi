@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    cofirmations: 'users/confirmations',
   }
   
   resources :profiles, except: %i(index show destroy)
