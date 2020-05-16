@@ -2,7 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :registerable,
          :confirmable,
-         :validatable
+         :validatable,
+         :recoverable
   validates :name, presence: true
   has_many :tweets, dependent: :destroy
   has_many :replies, dependent: :destroy

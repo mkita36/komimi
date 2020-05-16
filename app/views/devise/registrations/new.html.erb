@@ -31,14 +31,14 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %>文字以上)</em>
         <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control-plaintext text-white"  %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control-plaintext text-white" %>
       </div>
     </div>
 
     <div class="col rounded bg-info">
       <div class="field">
         <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-plaintext text-white"  %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control-plaintext text-white" %>
       </div>
     </div>
 
