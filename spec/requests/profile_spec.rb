@@ -7,22 +7,22 @@ RSpec.describe 'プロフィール', type: :request do
       sign_in @user
     end
     it '登録画面にアクセスすること' do
-      get new_user_profile_path(@user)
+      get new_profile_path(@user)
       expect(response).to have_http_status(200)
     end
     it '登録していない場合、ルート画面から登録画面に転送されること' do
       get timelines_path
-      expect(response).to redirect_to new_user_profile_path(@user)
+      expect(response).to redirect_to new_profile_path(@user)
     end
     it '登録すること' do
       profile = FactoryBot.build(:profile, user: @user)
       expect {
-        post user_profiles_path(@user), params: {profile: profile.attributes}
+        post profiles_path(@user), params: {profile: profile.attributes}
       }.to change(Profile, :count).by(1)
     end
     it '登録後、ユーザー一覧画面に転送されること' do
       profile = FactoryBot.build(:profile, user: @user)
-      post user_profiles_path(@user), params: {profile: profile.attributes}
+      post profiles_path(@user), params: {profile: profile.attributes}
       expect(response).to redirect_to users_path
     end
   end
@@ -38,13 +38,13 @@ RSpec.describe 'プロフィール', type: :request do
       expect(response).to have_http_status(200)
     end
     it '編集画面にアクセスすること' do
-      get edit_user_profile_path(@user, @user.profile)
+      get edit_profile_path(@user.profile)
       expect(response).to have_http_status(200)
     end
     it '編集すること' do
       @user.profile['self_introduction'] = 'はじめまして'
       @user.profile['birthday'] = '1992-02-02'
-      patch user_profile_path(@user, @user.profile), params: {profile: @user.profile.attributes}
+      patch profile_path(@user.profile), params: {profile: @user.profile.attributes}
       expect(response).to redirect_to user_profile_path(@user, @user.profile)
     end
   end
