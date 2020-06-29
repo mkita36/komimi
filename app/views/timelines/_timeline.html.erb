@@ -1,5 +1,5 @@
 <div class="row border-top border-secondary align-items-center py-2">
-  <div class="col-3">
+  <div class="col-4 col-sm-3">
     <% if tweet.user.profile.image.present? %>
       <%= image_tag tweet.user.profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
       <%= link_to "", user_profile_path(tweet.user.id, tweet.user.profile.id), class:"stretched-link" %>
@@ -8,7 +8,7 @@
       <%= link_to "", user_profile_path(tweet.user.id, tweet.user.profile.id), class:"stretched-link" %>
     <% end %>
   </div>
-  <div class="col-7">
+  <div class="col-6 col-sm-7">
     <div class="row">
       <%= tweet.user.name %>
     </div>
@@ -22,7 +22,7 @@
       <%= l tweet.created_at, format: :short %>
     </div>
   </div>
-  <div class="col-2 h4 align-self-end">
+  <div class="col-2 col-sm-2 h4 align-self-end text-center">
     <%= link_to "💬", tweet_path(tweet)%>
   </div>
 </div>

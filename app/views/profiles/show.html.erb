@@ -1,37 +1,43 @@
 <div class="row align-items-center py-1">
-  <div class="col-1">
+  <div class="col-2 col-sm-1">
     <div class="h3 font-weight-bold">
       <%= link_to "←", session[:path_back_from_profile] %>
     </div>
   </div>
-  <div class="col-5 h3">
+  <div class="col-10 col-sm-11 h3">
     <%= @user.name %>
   </div>
 </div>
 <div class="row align-items-end">
-  <%= render 'image', profile: @profile %>
-  <% if @user.id == current_user.id %>
-    <div class="col-6">
-      <div>
-        <%= link_to 'プロフィール編集', edit_profile_path(current_user), class:"btn btn-sm btn-outline-primary" %>
+  <div class="col-5">
+    <%= render 'image', profile: @profile %>
+  </div>
+  <div class="col-7">
+    <% if @user.id == current_user.id %>
+      <div class="row">
+        <div>
+          <%= link_to 'プロフィール編集', edit_profile_path(current_user), class:"btn btn-sm btn-outline-primary" %>
+        </div>
       </div>
-    </div>
-    <div class="col-3">
-      <div>
-        <%= link_to 'Replies', user_replies_path(current_user), class:"btn btn-sm btn-outline-primary" %>
-      </div>
-    </div>
-  <% else %>
-    <% if current_user.following?(@user) %>
-      <div>
-        <%= link_to 'フォローを外す', unfollow_path(@user), method: :POST, class: "btn btn-sm btn-outline-primary" %>
+      <div class="row pt-1">
+        <div>
+          <%= link_to 'Replies', user_replies_path(current_user), class:"btn btn-sm btn-outline-primary" %>
+        </div>
       </div>
     <% else %>
-      <div>
-        <%= link_to 'フォローする', follow_path(@user), method: :POST, class: "btn btn-sm btn-primary text-info" %>
+      <div class="row">
+      <% if current_user.following?(@user) %>
+        <div>
+          <%= link_to 'フォローを外す', unfollow_path(@user), method: :POST, class: "btn btn-sm btn-outline-primary" %>
+        </div>
+      <% else %>
+        <div>
+          <%= link_to 'フォローする', follow_path(@user), method: :POST, class: "btn btn-sm btn-primary text-info" %>
+        </div>
+      <% end %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
 <br>
 <div class="row">
@@ -40,24 +46,18 @@
   </div>
 </div>
 <div class="row py-1">
-  <div class="col-5">
-    フォロー数:
-  </div>
-  <div class="col-1">
+  <div class="col">
+    フォロー数 :　　
     <%= @user.follower.count %>
-  </div>
-  <div class="col-6">
+    　　
     <%= link_to "内訳", followindex_path(@user.id) %>
   </div>
 </div>
 <div class="row py-1">
-  <div class="col-5">
-    フォロワー数:
-  </div>
-  <div class="col-1">
+  <div class="col">
+    フォロワー数 :　
     <%= @user.followed.count %>
-  </div>
-  <div class="col-6">
+    　　
     <%= link_to "内訳", followerindex_path(@user.id) %>
   </div>
 </div>

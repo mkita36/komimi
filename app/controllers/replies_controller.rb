@@ -30,7 +30,7 @@ class RepliesController < ApplicationController
 
   def destroy
     @reply.destroy
-    redirect_to tweet_replies_path, notice: '削除完了'
+    redirect_to user_replies_path(current_user), notice: '削除完了'
   end
 
   private

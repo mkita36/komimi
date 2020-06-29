@@ -1,10 +1,10 @@
 <div class="row align-items-center py-1">
-  <div class="col-1">
+  <div class="col-2 col-sm-1">
     <div class="h3 font-weight-bold">
       <%= link_to "←", user_profile_path(current_user, current_user.profile) %>
     </div>
   </div>
-  <div class="col-11 h3">
+  <div class="col-10 col-sm-11 h3">
     過去のReply
   </div>
 </div>
@@ -13,7 +13,7 @@
   <% tweet = Tweet.find(reply.tweet_id) %>
   <div class="row border-top border-secondary align-items-center py-2">
   <%= render 'profiles/image', profile: Profile.find_by(user_id: tweet.user_id) %>
-    <div class="col-9">
+    <div class="col-8 col-sm-9">
       <div class="row">
         <%= tweet.user.name %>
       </div>
@@ -27,7 +27,7 @@
       <i class="fas fa-reply"></i>
     </div>
     <%= render 'profiles/image', profile: current_user.profile %>
-    <div class="col-6">
+    <div class="col-4 col-sm-6">
       <div class="row">
         <%= current_user.name %>
       </div>
@@ -35,14 +35,14 @@
         <%= reply.comment %>
       </div>
     </div>
-    <div class="col-2">
+    <div class="col-2 col-sm-2">
       <div class="row">
-        <div class="col  text-center">
+        <div class="col px-0 text-center">
           <%= link_to "編集", edit_tweet_reply_path(tweet, reply) %>
         </div>
       </div>
       <div class="row">
-        <div class="col  text-center">
+        <div class="col px-0 text-center">
           <%= link_to '削除', tweet_reply_path(tweet, reply), method: :delete, data: { confirm: '本当に削除しますか？' } %>
         </div>
       </div>

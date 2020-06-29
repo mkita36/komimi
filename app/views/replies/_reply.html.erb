@@ -3,7 +3,7 @@
     <i class="fas fa-reply"></i>
   </div>
   <%= render 'profiles/image', profile: Profile.find_by(user: reply.user) %>
-  <div class="col-6">
+  <div class="col-6 col-sm-8">
     <div class="row">
       <%= User.find(reply.user_id).name %>
     </div>

@@ -1,6 +1,6 @@
 <%= form_with(model: tweet, url: timelines_path) do |f| %>
 	<div class="row align-items-center py-2">
-		<div class="col-3">
+		<div class="col-4 col-sm-3">
 			<% if current_user.profile.image.present? %>
 				<%= image_tag current_user.profile.image.variant(resize_to_fill:[80,80]).processed, class:"rounded-circle" %>
 				<%= link_to "", user_profile_path(current_user, current_user.profile), class:"stretched-link" %>
@@ -8,12 +8,12 @@
 				<i class="fas fa-user-circle fa-5x" style="color: silver"></i>
 			<% end %>
 		</div>
-		<div class="col-6 col-md-7">
+		<div class="col-5 col-sm-7">
 			<%= f.text_area :content, placeholder: "つぶやいてみよう！", class: "form-control-plaintext text-white"%>
 			<div id="error_explanation"></div>
 		</div>
-		<div class="col-3 col-md-2">
-			<%= f.submit("Tweet", class: "btn btn-sm btn-primary") %>
+		<div class="col-3 col-sm-2">
+			<%= f.submit("Tweet", class: "btn btn-sm btn-primary px-1") %>
 		</div>
 	</div>
 <% end %>

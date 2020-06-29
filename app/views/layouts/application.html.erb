@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Twitter</title>
+    <title>komimi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,36 +12,34 @@
   <body class="bg-dark">
     <div class="container text-light">
       <div class="row">
-        <div class="col-2 col-lg-1 text-center h3 fixed-top" style="height: 100%">
+        <div class="col-2 text-center h3 sticky-top" style="height: 100%">
           <div>
-            <%= link_to root_path, style: "color: white", class:"btn btn-dark btn-lg" do %>
+            <%= link_to root_path, style: "color: white", class:"btn btn-dark btn-lg px-0" do %>
               <i class="fab fa-twitter"></i>
             <% end %>
           </div>
           <div>
-            <%= link_to root_path, style: "color: white", class:"btn btn-dark btn-lg" do %>
+            <%= link_to root_path, style: "color: white", class:"btn btn-dark btn-lg px-0" do %>
               <i class="fas fa-home"></i>
             <% end %>
           </div>
           <div>
-            <%= link_to user_profile_path(current_user, current_user.profile), style:"color: white", class:"btn btn-dark btn-lg" do %>
+            <%= link_to user_profile_path(current_user, current_user.profile), style:"color: white", class:"btn btn-dark btn-lg px-0" do %>
               <i class="fas fa-user"></i>
             <% end %>
           </div>
           <div>
-            <%= link_to users_path, style:"color: white", class:"btn btn-dark btn-lg" do %>
+            <%= link_to users_path, style:"color: white", class:"btn btn-dark btn-lg px-0" do %>
               <i class="fas fa-users"></i>
             <% end %>
           </div>
           <div>
-            <%= link_to destroy_user_session_path, method: :delete, style:"color: white", class:"btn btn-dark btn-lg" do %>
+            <%= link_to destroy_user_session_path, method: :delete, style:"color: white", class:"btn btn-dark btn-lg px-0" do %>
               <i class="fas fa-sign-out-alt"></i>
             <% end %>
           </div>
         </div>
-        <div class="col-2 col-lg-1">
-        </div>
-        <div class="col-9 col-lg-10 border border-secondary">
+        <div class="col-9 border border-secondary">
           <% if notice %>
             <div id="notice" class="notice col rounded bg-info py-2">
           　　<%= notice %>
@@ -55,7 +54,7 @@
             <%= yield %>
           </div>
           </div>
-        <div class="col-1 col-lg-1">
+        <div class="col-1">
           <div class="row">
           </div>
         </div>

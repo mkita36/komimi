@@ -1,10 +1,10 @@
 <div class="row align-items-center py-1">
-  <div class="col-1">
+  <div class="col-2 col-sm-1">
 	  <div class="h3 font-weight-bold">
-      <%= link_to "←", profile_path(current_user) %>
+      <%= link_to "←", user_profile_path(current_user, current_user.profile) %>
     </div>
   </div>
-  <div class="col-11 h3">
+  <div class="col-10 col-sm-11 h3">
     プロフィール編集
   </div>
 </div>

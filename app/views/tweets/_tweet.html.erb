@@ -1,18 +1,18 @@
 <div class="row border-top border-secondary align-items-center py-2">
-  <%= render 'profiles/image', profile: Profile.find_by(user: tweet.user) %>
-  <div class="col-7">
-    <div class="row">
-      <%= User.find(tweet.user_id).name %>
-    </div>
-    <div>
-      <%= safe_join(tweet.content.split("\n"), tag(:br)) %>
-    </div>
-    <div class="text-secondary">
-      <%= l tweet.created_at, format: :short %>
-    </div>
-  </div>
   <% if tweet.user_id == current_user.id %>
-    <div class="col-2">
+    <%= render 'profiles/image', profile: Profile.find_by(user: tweet.user) %>
+    <div class="col-5 col-sm-7">
+      <div class="row">
+        <%= User.find(tweet.user_id).name %>
+      </div>
+      <div>
+        <%= safe_join(tweet.content.split("\n"), tag(:br)) %>
+      </div>
+      <div class="text-secondary">
+        <%= l tweet.created_at, format: :short %>
+      </div>
+    </div>
+    <div class="col-3 col-sm-2">
       <div class="row">
         <div class="col  text-center">
           <%= link_to "詳細", tweet_path(tweet)%>
@@ -22,6 +22,19 @@
         <div class="col  text-center">
           <%= link_to '削除', tweet, method: :delete, data: { confirm: '本当に削除しますか？' } %>
         </div>
+      </div>
+    </div>
+  <% else %>
+    <%= render 'profiles/image', profile: Profile.find_by(user: tweet.user) %>
+    <div class="col-8 col-sm-9">
+      <div class="row">
+        <%= User.find(tweet.user_id).name %>
+      </div>
+      <div>
+        <%= safe_join(tweet.content.split("\n"), tag(:br)) %>
+      </div>
+      <div class="text-secondary">
+        <%= l tweet.created_at, format: :short %>
       </div>
     </div>
   <% end %>
