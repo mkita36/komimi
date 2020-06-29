@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+user1 = User.create(name: 'イチロー', email: '1@sp.com', password: 'dddddd', password_confirmation: 'dddddd', confirmed_at: Time.now)
+user2 = User.create(name: '二郎', email: '2@sp.com', password: 'dddddd', password_confirmation: 'dddddd', confirmed_at: Time.now)
+user3 = User.create(name: 'サブロー', email: '3@sp.com', password: 'dddddd', password_confirmation: 'dddddd', confirmed_at: Time.now)
+user4 = User.create(name: '四郎', email: '4@sp.com', password: 'dddddd', password_confirmation: 'dddddd', confirmed_at: Time.now)
+user5 = User.create(name: '五郎丸', email: '5@sp.com', password: 'dddddd', password_confirmation: 'dddddd', confirmed_at: Time.now)
+user6 = User.create(name: 'ろくすけ', email: '6@sp.com', password: 'dddddd', password_confirmation: 'dddddd', confirmed_at: Time.now)
+  Profile.create(user: user1, self_introduction: 'イチローです。よろしくお願いします。食べることが大好きです。', live_in: '東京都墨田区', birthday: '1990-03-06')
+  Profile.create(user: user2, self_introduction: '二郎と申します。友達に誘われてはじめました。よろしくお願いします。', live_in: '東京都太田区', birthday: '1999-2-14')
+  Profile.create(user: user3, self_introduction: 'よろしくお願いします。野球観戦が趣味です。どこがファンとかはないですが、スター選手の活躍を見ると胸が高鳴ります。', live_in: '神奈川県横浜市', birthday: '1987-10-03')
+  Profile.create(user: user4, self_introduction: '四郎です。乃木坂４６の大ファンです。少しでも興味のある方はフォローをお願いします。', live_in: '北海道札幌市', birthday: '1992-08-08')
+  Profile.create(user: user5, self_introduction: 'はじめまして。五郎丸です。てきとーに呟きます。', live_in: '京都府左京区', birthday: '2001-01-06')
+  Profile.create(user: user6, self_introduction: '吾輩はろくすけなり。', live_in: '東京都太田区', birthday: '1997-12-20')
