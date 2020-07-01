@@ -8,7 +8,7 @@
     <%= @user.name %>をフォローしているユーザ
   </div>
 </div>
-<% @user.follower_user.each do |user| %>
+<% @followers.each do |user| %>
   <div class="row border-top border-secondary align-items-center py-2">
     <div class="col-4">
       <% if user.profile.image.present? %>
@@ -37,3 +37,6 @@
     </div>
   </div>
 <% end %>
+<div class="row border-top border-secondary align-content-center">
+  <%= paginate @followers %>
+</div>

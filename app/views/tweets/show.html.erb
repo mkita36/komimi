@@ -26,3 +26,6 @@
 <div id="replies">
 	<%= render partial: 'replies/reply', collection: @replies, as: 'reply' %>
 </div>
+<div class="row border-top border-secondary  justify-content-center">
+  <%= paginate @replies %>
+</div>

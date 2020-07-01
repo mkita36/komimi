@@ -3,7 +3,7 @@ class RepliesController < ApplicationController
   before_action :set_reply, only: %i(edit update destroy)
 
   def index
-    @replies = current_user.replies.order(created_at: :desc)
+    @replies = current_user.replies.order(created_at: :desc).page(params[:page])
   end
 
   def edit

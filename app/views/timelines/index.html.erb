@@ -7,3 +7,6 @@
 <div id="timelines">
   <%= render partial: 'timeline', collection: @timelines, as: 'tweet' %>
 </div>
+<div class="row border-top border-secondary justify-content-center">
+  <%= paginate @timelines %>
+</div>

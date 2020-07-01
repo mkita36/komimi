@@ -8,7 +8,7 @@
     ユーザー一覧
   </div>
 </div>
-<% User.all.where.not(id: current_user.id).each do |user| %>
+<% @users.each do |user| %>
   <div class="row border-top border-secondary align-items-center py-1">
     <div class="col-4">
       <% if user.profile.image.present? %>
@@ -37,3 +37,6 @@
     </div>
   </div>
 <% end %>
+<div class="row border-top border-secondary align-content-center">
+  <%= paginate @users %>
+</div>

@@ -3,7 +3,7 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show]
 
   def show
-    @replies = @tweet.replies.order(created_at: :desc)
+    @replies = @tweet.replies.order(created_at: :desc).page(params[:page])
     @reply = current_user.replies.build
   end
 
