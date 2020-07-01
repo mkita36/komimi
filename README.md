@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* 概要
+　　情報共有掲示板です。（Twitterをベースにしています。）
 
-Things you may want to cover:
+* 機能・技術一覧
+　・認証機能：　　　　　　　　devise（メール認証：sendgrid）
+　・PWA：　　　　　　　　　　serviceworker-rails
+　・記事投稿、コメント機能：　ajax
+　・ページネーション機能：　　kaminari
+　・画像アップロード機能：　　AWS S3
+　・フォロー、フォロワー機能
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* その他、使用している技術
+　・テスト：　　　　rspec
+　・データベース：　postgreSQL
+　・インフラ：　　　heroku
+　・CSS：　　　　　Bootstrap,FontAwesome
