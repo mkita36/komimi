@@ -4,9 +4,9 @@
 　　情報共有掲示板です。（Twitterをベースにしています。）  
   
 * 機能・技術一覧  
-　・認証機能：　　　　　　　　devise（メール認証：sendgrid）  
+　・認証機能（メール認証）：　devise, sendgrid  
 　・PWA：　　　　　　　　　　serviceworker-rails  
-　・記事投稿、コメント機能：　ajax  
+　・記事投稿、コメント機能：　Ajax  
 　・ページネーション機能：　　kaminari  
 　・画像アップロード機能：　　AWS S3  
 　・フォロー、フォロワー機能  
@@ -15,4 +15,5 @@
 　・テスト：　　　　rspec  
 　・データベース：　postgreSQL  
 　・インフラ：　　　heroku  
-　・CSS：　　　　　Bootstrap,FontAwesome  
+　・CSS：　　　　　Bootstrap, FontAwesome  
+　　　　　　　　　 レスポンシブデザイン
