@@ -9,11 +9,14 @@
 　・記事投稿、コメント機能：　Ajax  
 　・ページネーション機能：　　kaminari  
 　・画像アップロード機能：　　AWS S3  
-　・フォロー、フォロワー機能  
+　・フォロー・フォロワー機能  
   
 * その他、使用している技術  
 　・テスト：　　　　rspec  
 　・データベース：　postgreSQL  
 　・インフラ：　　　heroku  
 　・CSS：　　　　　Bootstrap, FontAwesome  
-　　　　　　　　　 レスポンシブデザイン
+　　　　　　　　　　レスポンシブデザイン  
+
+* イメージ  
+https://user-images.githubusercontent.com/61313424/86258049-52dfc600-bbf5-11ea-9259-305754e7aeea.png
