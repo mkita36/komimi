@@ -5,7 +5,6 @@
   
 * 機能・技術一覧  
 　・認証機能（メール認証）：　devise, sendgrid  
-　・PWA：　　　　　　　　　　serviceworker-rails  
 　・記事投稿、コメント機能：　Ajax  
 　・ページネーション機能：　　kaminari  
 　・画像アップロード機能：　　AWS S3  
