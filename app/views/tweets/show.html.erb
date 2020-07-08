@@ -4,9 +4,6 @@
       <%= link_to "←", session[:path_back_from_tweet] %>
     </div>
   </div>
-  <div class="col-10 col-sm-11 h3">
-    Tweet
-  </div>
 </div>
 <div class="row align-items-center py-2">
   <%= render 'profiles/image', profile: Profile.find_by(user: @tweet.user) %>

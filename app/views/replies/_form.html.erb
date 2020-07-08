@@ -15,11 +15,11 @@
     </div>
     <%= render 'profiles/image', profile: current_user.profile %>
     <div class="col-4 col-sm-6">
-      <%= f.text_area :comment, placeholder: "Replyを入力", class: "form-control-plaintext text-white"%>
+      <%= f.text_area :comment, placeholder: "コメントを入力", class: "form-control-plaintext text-white"%>
 			<div id="error_explanation"></div>
     </div>
     <div class="col-2 col-sm-2">
-      <%= f.submit("Reply", class: "btn btn-sm btn-primary px-1") %>
+      <%= f.submit("投稿", class: "btn btn-sm btn-primary px-1") %>
     </div>
   </div>
 
