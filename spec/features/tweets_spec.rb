@@ -10,7 +10,7 @@ RSpec.feature 'JavaScriptでツイート', type: :feature do
     fill_in 'tweet[content]', with: 'JavaScriptでお試しツイート'
     expect do
       click_button 'commit'
-      expect(page).to have_content 'Home'
+      expect(page).to have_content 'JavaScriptでお試しツイート'
     end.to change(@user.tweets, :count).by(1)
   end
 end

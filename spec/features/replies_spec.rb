@@ -15,7 +15,7 @@ RSpec.feature 'JavaScriptでリプライ', type: :feature do
     fill_in 'reply[comment]', with: 'JavaScriptでお試しリプライ'
     expect do
       click_button 'commit'
-      expect(page).to have_content 'Tweet'
+      expect(page).to have_content 'JavaScriptでお試しリプライ'
     end.to change(@user.replies, :count).by(1)
   end
 end
