@@ -12,7 +12,7 @@
       <%= @tweet.user.name %>
     </div>
     <div>
-    <%= safe_join(@tweet.content.split("\n"), tag(:br)) %>
+      <%= safe_join(@tweet.content.split("\n"), tag(:br)) %>
 		</div>
     <div class="text-secondary">
       <%= l @tweet.created_at, format: :short %>

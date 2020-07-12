@@ -2,7 +2,7 @@ class TimelinesController < ApplicationController
 
   def index
     if current_user.profile.present?
-      @timelines = Tweet.where(user: current_user).or(Tweet.where(user: current_user.following_user)).order(created_at: :desc).page(params[:page])
+      @timelines = Tweet.where(user: current_user).or(Tweet.where(user: current_user.following_user)).order(created_at: :desc).page(params[:page]).per(20)
       @tweet = current_user.tweets.build
       session[:path_back_from_profile] = root_path
       session[:path_back_from_tweet] = root_path

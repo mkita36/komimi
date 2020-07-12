@@ -8,7 +8,10 @@
       <%= User.find(reply.user_id).name %>
     </div>
     <div>
-      <%= simple_format(reply.comment) %>
+      <%= safe_join(reply.comment.split("\n"), tag(:br)) %>
+    </div>
+    <div class="text-secondary">
+      <%= l reply.created_at, format: :short %>
     </div>
   </div>
 </div>
