@@ -7,7 +7,7 @@ gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~>4.4.1'
 gem 'devise'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'kaminari'
 gem 'pg'
 gem 'puma', '~> 4.1'
